@@ -1,0 +1,509 @@
+// OP2Editor.idl : IDL source for OP2Editor.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (OP2Editor.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+
+
+// Interfaces
+// **********
+
+// StreamReader
+[
+	object, uuid(70AC9DEE-CE0F-4145-A140-6AE1BA658B1E), oleautomation, nonextensible,
+	helpstring("Stream Reader interface for reading in data. This allows both individual files and files stored in archives to be read with the same ease.")
+]
+interface StreamReader : IUnknown
+{
+	[ local, helpstring("Read numBytes into a buffer specified by the pointer pBuffer.") ]
+	HRESULT Read([in] int numBytes, [in] int pBuffer, [out, retval] int *numBytesRead);
+	[ propget, helpstring("Returns a status code for the stream. A value of 0 denotes no errors. If an error occured, a nonzero error code is returned. A read past the end of the file is considered an error.") ]
+	HRESULT Status([out, retval] int *status);
+}
+
+// SeekableStreamReader
+[
+	object, uuid(57B5FDD0-8E6E-4134-94DE-6949BD2EB3CB), oleautomation, nonextensible,
+	helpstring("Enhanced StreamReader interface to support seekable stream.")
+]
+interface SeekableStreamReader : StreamReader
+{
+	[ propget, helpstring("Current offset into the stream of the read pointer.") ]
+	HRESULT ReadOffset([out, retval] int *readOffset);
+	[ propget, helpstring("Total number of bytes in this stream.") ]
+	HRESULT StreamSize([out, retval] int *streamSize);
+	[ helpstring("Sets the current read position for this stream.") ]
+	HRESULT Seek([in] int offset);
+}
+
+
+
+// StreamWriter
+[
+	object, uuid(B83597A2-3471-48db-B9BC-EB4749BA1AAA), oleautomation, nonextensible,
+	helpstring("Stream Writer interface for writing out data. This allows both individual files and files stored in archives to be written with the same ease.")
+]
+interface StreamWriter : IUnknown
+{
+	[ local, helpstring("Write numBytes to the stream from the specified buffer.") ]
+	HRESULT Write([in] int numBytes, [in] int pBuffer, [out, retval] int *numBytesWritten);
+	[ propget, helpstring("Returns a status code for the stream. A value of 0 denotes no errors. If an error occured, a nonzero error code is returned.") ]
+	HRESULT Status([out, retval] int *status);
+}
+
+
+// ArchiveReader
+[
+	object, uuid(CE02B285-D2F4-4707-B6D3-39CB6697357C), oleautomation, nonextensible,
+	helpstring("Archive Reader interface for viewing and reading the contents of archives.")
+]
+interface ArchiveReader : IUnknown
+{
+	[ propget, helpstring("Number of files stored in the archive.") ]
+	HRESULT NumFiles([out, retval] int *numFiles);
+	[ propget, helpstring("File name of a file stored in the archive.") ]
+	HRESULT FileName([in] int index, [out, retval] BSTR *fileName);
+
+	[ helpstring("Opens an internal file as a stream for reading.") ]
+	HRESULT OpenStreamRead([in] BSTR filename, [out, retval] StreamReader **stream);
+}
+
+
+// ArchiveWriter
+[
+	object, uuid(98A6E750-10C7-4133-9A0E-17FB62EC6ADE), oleautomation, nonextensible,
+	helpstring("Archive Writer interface for saving streams as archive files.")
+]
+interface ArchiveWriter : IUnknown
+{
+	[ helpstring("Adds a stream as an input source for the archive file data. The fileName specified is the internal archive file name.") ]
+	HRESULT AddToArchive([in] BSTR fileName, [in] SeekableStreamReader *inStream, [in] int reserved);
+	[ helpstring("Collects all input stream data into the output stream as an archive.") ]
+	HRESULT WriteArchive([in] StreamWriter *outStream);
+}
+
+
+
+
+// TileSet
+[
+	object, uuid(C7F1E185-8079-4538-96CF-5950406AE1AA), oleautomation, nonextensible,
+	helpstring("Tile Set interface for managing tile sets used to display maps.")
+]
+interface TileSet : IUnknown
+{
+	[ propget, helpstring("Returns the number of tiles stored in this tile set.") ]
+	HRESULT NumTiles([out, retval] int *numTiles);
+	[ propget, helpstring("Returns the size of the tiles in this tile set in pixels. Note: Both x and y sizes are the same.") ]
+	HRESULT TileSize([out, retval] int *tileSize);
+	[ propget, helpstring("Returns the bit depth of the pixel data for this tile set.") ]
+	HRESULT BitDepth([out, retval] int *bitDepth);
+	[ propget, helpstring("") ]
+	HRESULT NumPaletteEntries([out, retval] int *numPaletteEntries);
+	[ propget, helpstring("Returns an RGBQUAD structure (type casted as a 32 bit word) corresponding to that palette entry.") ]
+	HRESULT PaletteEntry([in] int index, [out, retval] int *palEntry);
+	[ propput, helpstring("Sets an RGBQUAD structure (type casted as a 32 bit word) into the corresponding palette entry.") ]
+	HRESULT PaletteEntry([in] int index, [in] int palEntry);
+
+	[ helpstring("Expands or contracts the internal buffer to hold the specified number of tiles. Previous tiles are copied into the new buffer.") ]
+	HRESULT SetNumTiles([in] int numTiles);
+
+	[ local, helpstring("Retrieves an array of pixel data.") ]
+	HRESULT GetPixelData([in] int pBuffer, [in] int startOffset, [in] int numBytes);
+	[ local, helpstring("Sets an array of pixel data") ]
+	HRESULT SetPixelData([in] int pBuffer, [in] int startOffset, [in] int numBytes);
+
+	// **TODO** Consider removing this, replace with PasteTile
+	[ propget, helpstring("Returns the minimap color for the given tile as a 32 bit color value.") ]
+	HRESULT MiniMapColors([in] int tileIndex, [out, retval] int *color);
+
+	// Allow for zoom option
+	// **TODO** Consider adding args for clipping
+	[ helpstring("Draws the specified tile to the given device context at the given location.") ]
+	HRESULT PasteTile([in] int destDC, [in] int pixelX, [in] int pixelY, [in] int tileNum);
+
+
+	[ v1_enum, helpstring("Enum used to control the format of the saved tile set.") ]
+	enum TileSetSaveFormat
+	{
+		Default	 = 0,		// The normal custom OP2 format
+		Bitmap	 = 1,		// Standard windows bitmap
+	};
+
+	[ helpstring("Save all the tile set data to a stream.") ]
+	HRESULT SaveTileSet([in] StreamWriter *stream, [in] enum TileSetSaveFormat saveFormat);
+}
+
+
+// TileSetSource
+[
+	object, uuid(153BC780-0FF2-44e4-8448-5B3F46050475), oleautomation, nonextensible,
+	helpstring("Tile Set Manager interface used to load and share tile sets among multiple open map files.")
+]
+interface TileSetSource : IUnknown
+{
+	HRESULT LoadTileSet([in] BSTR tileSetName, [out, retval] TileSet **tileSet);
+	HRESULT UnloadTileSet([in] BSTR tileSetName);
+}
+
+
+// TileSetManager
+[
+	object, uuid(33A10A9E-A3B0-498f-A871-3ECC78B477FB), oleautomation, nonextensible,
+	helpstring("Manages a collection of tile sets and a mapping into them.")
+]
+interface TileSetManager : IUnknown
+{
+	// Tile set info
+	[ propget, helpstring("Number of tile sets used by tiles in this group") ]
+	HRESULT NumTileSets([out, retval] int *numTileSets);
+	[ propget, helpstring("Gets the name of a loaded tile set.") ]
+	HRESULT TileSetName([in] int index, [out, retval] BSTR *tileSetName);
+	[ propget, helpstring("Returns one of the tile set objects referenced by this block of tiles.") ]
+	HRESULT TileSet([in] int index, [out, retval] TileSet **tileSet);
+
+	// Tile set management
+	[ helpstring("Adds a tile set to the tile set manager and returns its index.") ]
+	HRESULT AddTileSet([in] BSTR tileSetName, [out, retval] int *index);
+	[ helpstring("Removes a tile set from use and clears any mappings referencing the tile set.") ]
+	HRESULT RemoveTileSet([in] BSTR tileSetName, [out, retval] int *index);
+	[ helpstring("Replaces the tile set at the given index with the specified tile set.") ]
+	HRESULT ReplaceTileSet([in] int index, [in] BSTR tileSetName);
+	[ helpstring("Adds mapping entries to refer to desired tiles in the tile set.") ]
+	HRESULT MapInTiles([in] int tileSetIndex, [in] int startTile, [in] int numTiles, [out, retval] int *mappingIndex);
+
+	// Mapping lookup
+	[ helpstring("This function looks for a mapping entry with the given fields and returns the index. A value of -1 is returned is no match is found. Note: -1 can be used for numTileReplacements and cycleDelay as 'don't care' conditions.") ]
+	HRESULT GetMappingIndex([in] int tileSetIndex, [in] int tileIndex, [in] int numTileReplacements, [in] int cycleDelay, [out, retval] int *mappingIndex);
+
+	// Mapping count
+	[ propget, helpstring("Returns the number of mappings.") ]
+	HRESULT NumMappings([out, retval] int *numMappings);
+
+	// Tile mapping info
+	[ propget, helpstring("Index of the tile set that this mapping entry uses.") ]
+	HRESULT TileSetIndex([in] int mappingIndex, [out, retval] int *tileSetIndex);
+	[ propput, helpstring("Sets the index of the tile set that this mapping entry uses.") ]
+	HRESULT TileSetIndex([in] int mappingIndex, [in] int tileSetIndex);
+	[ propget, helpstring("Index of the tile in the tile set that this tile uses.") ]
+	HRESULT TileSetTileIndex([in] int mappingIndex, [out, retval] int *tileSetTileIndex);
+	[ propput, helpstring("Sets the index of the tile that this mapping entry uses.") ]
+	HRESULT TileSetTileIndex([in] int mappingIndex, [in] int tileSetTileIndex);
+	[ propget, helpstring("Number of consecutive tile mapping entries that can be used as a replacement for this entry in an animation sequence.") ]
+	HRESULT NumTileReplacements([in] int mappingIndex, [out, retval] int *numTileReplacements);
+	[ propput, helpstring("Sets the number of consecutive mapping entries that can be used as a replacement for this entry in an animation sequence.") ]
+	HRESULT NumTileReplacements([in] int mappingIndex, [in] int numTileReplacements);
+	[ propget, helpstring("Number of game cycles that elapse before this entry is replaced by another in the animation sequence.") ]
+	HRESULT CycleDelay([in] int mappingIndex, [out, retval] int *cycleDelay);
+	[ propput, helpstring("Sets the number of game cycles that elapse before this entry is replace by another in the animation sequence.") ]
+	HRESULT CycleDelay([in] int mappingIndex, [in] int cycleDelay);
+
+	// Terrain set count
+	[ propget, helpstring("Returns the number of terrain sets.") ]
+	HRESULT NumTerrains([out, retval] int *numTerrains);
+
+	[ helpstring("Expands or contracts the internal buffer to hold the specified number of terrains. Previous terrains are copied into the new buffer.") ]
+	HRESULT SetNumTerrains([in] int numTerrains);
+	
+	// Terrain sets
+	[ v1_enum, helpstring("Enum used to control the direction for tube/wall terrain data.") ]
+	enum TerrainTubeDirection
+	{
+		DirLeftToRight			= 0,
+		DirTopToBottom			= 1,
+		DirLeftToBottom			= 2,
+		DirRightToBottom		= 3,
+		DirLeftToTop			= 4,
+		DirRightToTop			= 5,
+		DirLeftRightTop			= 6,
+		DirLeftRightBottom		= 7,
+		DirLeftRightTopBottom	= 8,
+		DirLeftTopBottom		= 9,
+		DirRightTopBottom		= 10,
+		DirBottom				= 11,
+		DirTop					= 12,
+		DirRight				= 13,
+		DirLeft					= 14,
+		DirMiddleSectionOnly	= 15
+	};
+
+	[ propget, helpstring("Starting mapping index for a given terrain set.") ]
+	HRESULT TerrainStartTile([in] int terrainIndex, [out, retval] int *startMapping);
+	[ propput, helpstring("Sets the starting mapping index for a given terrain set.") ]
+	HRESULT TerrainStartTile([in] int terrainIndex, [in] int startMapping);
+	[ propget, helpstring("Ending mapping index for a given terrain set.") ]
+	HRESULT TerrainEndTile([in] int terrainIndex, [out, retval] int *endMapping);
+	[ propput, helpstring("Sets the ending mapping index for a given terrain set.") ]
+	HRESULT TerrainEndTile([in] int terrainIndex, [in] int endMapping);
+	
+	[ propget, helpstring("Bulldozed tile index for a given terrain set.") ]
+	HRESULT TerrainDozed([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the bulldozed tile index for a given terrain set.") ]
+	HRESULT TerrainDozed([in] int terrainIndex, [in] int dataMapping);
+	[ propget, helpstring("Rubble tile index for a given terrain set.") ]
+	HRESULT TerrainRubble([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the rubble tile index for a given terrain set.") ]
+	HRESULT TerrainRubble([in] int terrainIndex, [in] int dataMapping);
+
+	[ propget, helpstring("Tube (unknown) index for a given terrain set.") ]
+	HRESULT TerrainTubeUnk([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the tube (unknown) index for a given terrain set.") ]
+	HRESULT TerrainTubeUnk([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+
+	[ propget, helpstring("Lava wall index for a given terrain set.") ]
+	HRESULT TerrainLavaWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the lava wall index for a given terrain set.") ]
+	HRESULT TerrainLavaWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+	[ propget, helpstring("Microbe wall index for a given terrain set.") ]
+	HRESULT TerrainMicrobeWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the microbe wall index for a given terrain set.") ]
+	HRESULT TerrainMicrobeWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+
+	[ propget, helpstring("Normal wall index for a given terrain set.") ]
+	HRESULT TerrainNormalWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the normal wall index for a given terrain set.") ]
+	HRESULT TerrainNormalWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+	[ propget, helpstring("Normal (damaged) wall index for a given terrain set.") ]
+	HRESULT TerrainDamagedWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the normal (damaged) wall index for a given terrain set.") ]
+	HRESULT TerrainDamagedWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+	[ propget, helpstring("Normal (ruined) wall index for a given terrain set.") ]
+	HRESULT TerrainRuinedWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the normal (ruined) wall index for a given terrain set.") ]
+	HRESULT TerrainRuinedWall([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+
+	[ propget, helpstring("Lava index for a given terrain set.") ]
+	HRESULT TerrainLava([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the lava index for a given terrain set.") ]
+	HRESULT TerrainLava([in] int terrainIndex, [in] int dataMapping);
+
+	[ propget, helpstring("Flat (1) index for a given terrain set.") ]
+	HRESULT TerrainFlat1([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the flat (1) index for a given terrain set.") ]
+	HRESULT TerrainFlat1([in] int terrainIndex, [in] int dataMapping);
+	[ propget, helpstring("Flat (2) index for a given terrain set.") ]
+	HRESULT TerrainFlat2([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the flat (2) index for a given terrain set.") ]
+	HRESULT TerrainFlat2([in] int terrainIndex, [in] int dataMapping);
+	[ propget, helpstring("Flat (3) index for a given terrain set.") ]
+	HRESULT TerrainFlat3([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the flat (3) index for a given terrain set.") ]
+	HRESULT TerrainFlat3([in] int terrainIndex, [in] int dataMapping);
+
+	[ propget, helpstring("Tube index for a given terrain set.") ]
+	HRESULT TerrainTube([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the tube index for a given terrain set.") ]
+	HRESULT TerrainTube([in] int terrainIndex, [in] enum TerrainTubeDirection direction, [in] int dataMapping);
+
+	[ propget, helpstring("Scorched tile index for a given terrain set.") ]
+	HRESULT TerrainScorched([in] int terrainIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the scorched tile index for a given terrain set.") ]
+	HRESULT TerrainScorched([in] int terrainIndex, [in] int dataMapping);
+
+	[ propget, helpstring("Unknown tile index for a given terrain set.") ]
+	HRESULT TerrainUnknown([in] int terrainIndex, [in] int unkIndex, [out, retval] int *dataMapping);
+	[ propput, helpstring("Sets the unknown tile index for a given terrain set.") ]
+	HRESULT TerrainUnknown([in] int terrainIndex, [in] int unkIndex, [in] int dataMapping);
+
+}
+
+
+// TileGroup
+// Note: TileGroups which are part of a map will have their TileSetManager point
+//		 to the TileSetManager of the containing map. Free floating TileGroups
+//		 will have their own TileSetManager object and can be used for copy and
+//		 paste operations between maps.
+[
+	object, uuid(8E43C614-715F-41df-B376-CB0B55F29090), oleautomation, nonextensible,
+	helpstring("Used to copy and paste tiles between maps and to define tile groups for commonly grouped tiles.")
+]
+interface TileGroup : IUnknown
+{
+	// Tile block dimensions
+	[ propget, helpstring("Width of group in tiles.") ]
+	HRESULT TileWidth([out, retval] int *tileWidth);
+	[ propget, helpstring("Height of group in tiles.") ]
+	HRESULT TileHeight([out, retval] int *tileHeight);
+
+	// TileSetManager access
+	[ propget, helpstring("Returns a TileSetManager object used to control the loaded tile sets for this map.") ]
+	HRESULT TileSetManager([out, retval] TileSetManager **tileSetManager);
+
+	// Tile info
+	[ propget, helpstring("Index into the tile mapping array of this tile. This array is used to tranlate a map tile index to the right tile set and right tile index in that tile set.") ]
+	HRESULT MappingIndex([in] int tileX, [in] int tileY, [out, retval] int *tileMappingIndex);
+	[ propput, helpstring("Sets the index into the tile mapping array of this tile.") ]
+	HRESULT MappingIndex([in] int tileX, [in] int tileY, [in] int tileMappingIndex);
+
+	// Display
+	// **TODO** Include more parameters: 
+	//		Zoom, 
+	//		flags (Normal, Passable/CellType display, LavaPossible, Lava, Blight, Wall or Building, Expand, Display Units/Map only)
+	[ helpstring("Draws a section of the tile group to the given device context at the desired location.") ]
+	HRESULT Draw([in] int destDC, [in] int sourcePixelX, [in] int sourcePixelY, [in] int pixelWidth, [in] int pixelHeight);
+}
+
+
+// MapFile (derived from TileGroup)
+[
+	object, uuid(E1C7751A-AA0C-40b7-95C4-1693C86784FC), oleautomation, nonextensible,
+	helpstring("Map File interface used to access and display map data.")
+]
+interface MapFile : TileGroup
+{
+	// Determines if map is Around-The-World type of map. (Determined by width)
+	[ propget, helpstring("Returns 1 if the map is set to Around-The-World mode and 0 otherwise.") ]
+	HRESULT AroundTheWorld([out, retval] int *bAroundTheWorld);
+
+	// Remove this? **TODO**
+	[ propget, helpstring("Returns 32-bit packed tile data at the specified location.") ]
+	HRESULT TileData([in] int tileX, [in] int tileY, [out, retval] int *tile);
+	[ propput, helpstring("Sets new 32-bit packed tile data at the specified location.") ]
+	HRESULT TileData([in] int tileX, [in] int tileY, [in] int newTile);
+
+	// Bit fields
+	[ propget, helpstring("Gets the CellType of the given tile. This controls the movement rate of units.") ]
+	HRESULT CellType([in] int tileX, [in] int tileY, [out, retval] int *cellType);
+	[ propput, helpstring("Sets the CellType of the given tile. This controls the movement rate of units.") ]
+	HRESULT CellType([in] int tileX, [in] int tileY, [in] int newCellType);
+	[ propget, helpstring("Gets the UnitIndex of the unit on this tile.") ]
+	HRESULT UnitIndex([in] int tileX, [in] int tileY, [out, retval] int *unitIndex);
+	[ propput, helpstring("Sets the UnitIndex of the unit on this tile.") ]
+	HRESULT UnitIndex([in] int tileX, [in] int tileY, [in] int newUnitIndex);
+
+	// Flags
+	[ propget, helpstring("Get the bit flag that determines if lava occupies this tile.") ]
+	HRESULT Lava([in] int tileX, [in] int tileY, [out, retval] int *lava);
+	[ propput, helpstring("Set the bit flag that determines if lava occupies this tile.") ]
+	HRESULT Lava([in] int tileX, [in] int tileY, [in] int lava);
+	[ propget, helpstring("Get the bit flag that determines if lava can occupy this tile.") ]
+	HRESULT LavaPossible([in] int tileX, [in] int tileY, [out, retval] int *lavaPossible);
+	[ propput, helpstring("Set the bit flag that determines if lava can occupy this tile.") ]
+	HRESULT LavaPossible([in] int tileX, [in] int tileY, [in] int lavaPossible);
+	[ propget, helpstring("Get the bit flag that determines if lava or microbe is expanding to this tile.") ]
+	HRESULT Expand([in] int tileX, [in] int tileY, [out, retval] int *expand);
+	[ propput, helpstring("Set the bit flag that determines if lava or microbe is expanding to this tile.") ]
+	HRESULT Expand([in] int tileX, [in] int tileY, [in] int expand);
+	[ propget, helpstring("Get the bit flag that determines if microbe (the Blight) occupies this tile.") ]
+	HRESULT Microbe([in] int tileX, [in] int tileY, [out, retval] int *microbe);
+	[ propput, helpstring("Set the bit flag that determines if micrboe (the Blight) occupies this tile.") ]
+	HRESULT Microbe([in] int tileX, [in] int tileY, [in] int microbe);
+	[ propget, helpstring("Get the bit flag that determines if a Wall or Building occupies this tile. (Non-moveable tile).") ]
+	HRESULT WallOrBuilding([in] int tileX, [in] int tileY, [out, retval] int *wallOrBuilding);
+	[ propput, helpstring("Set the bit flag that determines if a Wall or Building occupies this tile. (Non-moveable tile).") ]
+	HRESULT WallOrBuilding([in] int tileX, [in] int tileY, [in] int wallOrBuilding);
+
+	// Copy and paste tiles
+	[ helpstring("Copies a block of tiles from the map into a tile group.") ]
+	HRESULT Copy([in] int tileX1, [in] int tileY1, [in] int tileX2, [in] int tileY2, [out, retval] TileGroup **tileGroup);
+	[ helpstring("Pastes the given tile group to the given location of the map.") ]
+	HRESULT Paste([in] int tileX, [in] int tileY, [in] TileGroup *tileGroup);
+
+	// TileGroup access
+	[ propget, helpstring("Returns the number of tile groups stored with this map file.") ]
+	HRESULT NumTileGroups([out, retval] int *numTileGroups);
+	[ propget, helpstring("Returns the desired tile group stored with the map data.") ]
+	HRESULT TileGroup([in] int tileGroupIndex, [out, retval] TileGroup **tileGroup);
+	[ propget, helpstring("Tile group text tag.") ]
+	HRESULT TileGroupName([in] int tileGroupIndex, [out, retval] BSTR *tileGroupName);
+	[ propput, helpstring("Sets the tile group's text tag.") ]
+	HRESULT TileGroupName([in] int tileGroupIndex, [in] BSTR tileGroupName);
+	[ helpstring("Adds a tile group association to this map.") ]
+	HRESULT AddTileGroup([in] TileGroup *newTileGroup);
+	[ helpstring("Removes a tile group association with this map.") ]
+	HRESULT RemoveTileGroup([in] int tileGroupIndex);
+
+	[ v1_enum, helpstring("Enum used to control loading and saving of maps and saved games.") ]
+	enum MapLoadSaveFormat
+	{
+		MapOnly = 0,			// Only map data that Outpost2.exe reads
+		TileGroups = 1,			// All map data that Outpost2.exe reads, plus tile group info from end of map file
+		Units = 2,				// All map data and unit data
+		SavedGameHeader = 4,	// All map data and saved game header data
+	};
+
+	// Map data saving
+	[ helpstring("Save the Map data to an output stream.") ]
+	HRESULT SaveMap([in] StreamWriter *stream, [in] enum MapLoadSaveFormat saveFlags, [out, retval] int *status);
+}
+
+
+// ResourceManager
+[
+	object, uuid(2A73E1A3-5FAA-4ac8-AC58-D28C77E780F0), oleautomation, nonextensible,
+	helpstring("Resource Manager interface used to locate and open resources.")
+]
+interface IResourceManager : IUnknown
+{
+	[ propget, helpstring("Returns the root path of the game directory from which all resources are searched for.") ]
+	HRESULT RootPath([out, retval] BSTR *path);
+	[ propput, helpstring("Sets the root path to the game directory so all relative file names will be searched for from here.") ]
+	HRESULT RootPath([in] BSTR path);
+
+	[ helpstring("Opens the specified resource (a file and optionally a path) and returns a stream opened for reading. Note: If the file resides in an archive, the archive name can be specified as a directory in the file's path.") ]
+	HRESULT OpenStreamRead([in] BSTR fileName, [out, retval] StreamReader **stream);
+	[ helpstring("Opens the specified resource (a file and optionally a path) and returns a stream opened for writing. Note: If the file resides in an archive, the archive name can be specified as a directory in the file's path.") ]
+	HRESULT OpenStreamWrite([in] BSTR fileName, [out, retval] StreamWriter **stream);
+
+	[ helpstring("Loads a map from a given file.") ]
+	HRESULT LoadMapFile([in] BSTR fileName, [in] enum MapLoadSaveFormat loadFlags, [out, retval] MapFile **mapFile);
+	[ helpstring("Loads a map using data from the given input stream.") ]
+	HRESULT LoadMap([in] StreamReader *inStream, [in] enum MapLoadSaveFormat loadFlags, [out, retval] MapFile **mapFile);
+	[ helpstring("Creates a new map based on the specified parameters.") ]
+	HRESULT CreateNewMap([in] int width, [in] int height, [out, retval] MapFile **newMap);
+
+	[ helpstring("Loads a tile set from a given file.") ]
+	HRESULT LoadTileSetFile([in] BSTR fileName, [out, retval] TileSet **tileSet);
+	[ helpstring("Loads a tile set using data from the given input stream.") ]
+	HRESULT LoadTileSet([in] StreamReader *inStream, [out, retval] TileSet **tileSet);
+	[ helpstring("Creates a new tile set based on the specified parameters.") ]
+	HRESULT CreateTileSet([in] int numTiles, [in] int bitDepth, [in] int width, [out, retval] TileSet **newTileSet);
+
+	[ helpstring("Loads Vol data from a given file.") ]
+	HRESULT LoadVolFile([in] BSTR fileName, [in] int bAttachToStream, [out, retval] ArchiveReader **volReader);
+	[ helpstring("Loads Vol data from a given stream.") ]
+	HRESULT LoadVol([in] SeekableStreamReader *inStream, [in] int bAttachToStream, [out, retval] ArchiveReader **volReader);
+	[ helpstring("Creates a new VOL file saving the output to the given output stream.") ]
+	HRESULT CreateVolFile([out, retval] ArchiveWriter **volWriter);
+
+	[ helpstring("Loads Clm data from a given file.") ]
+	HRESULT LoadClmFile([in] BSTR fileName, [in] int bAttachToStream, [out, retval] ArchiveReader **clmReader);
+	[ helpstring("Loads Clm data from a given stream.") ]
+	HRESULT LoadClm([in] SeekableStreamReader *inStream, [in] int bAttachToStream, [out, retval] ArchiveReader **clmReader);
+	[ helpstring("Create a new CLM file saving the output to the given output stream.") ]
+	HRESULT CreateClmFile([out, retval] ArchiveWriter **clmWriter);
+
+	[ helpstring("Adds an archive's contents to the resource search path. Archives are searched in the order added.") ]
+	HRESULT AddArchiveToSearch([in] ArchiveReader *archiveReader);
+	[ helpstring("Removes all archives from the resource search path.") ]
+	HRESULT ClearSearchPath();
+}
+
+
+
+
+// ************
+// Type Library
+// ************
+[
+	uuid(53FFC417-DCC3-44C1-BEF2-ACD5D3FD7412),
+	// **TODO** Update version number and helpstring
+	version(1.00),
+	helpstring("OP2Editor 1.00 Type Library."),
+]
+library OP2Editor
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[ uuid(C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B) ]
+	coclass ResourceManager
+	{
+		[default] interface IResourceManager;
+	}
+};

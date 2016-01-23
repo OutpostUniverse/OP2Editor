@@ -1,0 +1,23 @@
+HKCR
+{
+	OP2Editor.MapFile.1 = s 'MapFile Class'
+	{
+		CLSID = s '{03270D36-7780-450F-99B9-910C75A83A29}'
+	}
+	OP2Editor.MapFile = s 'MapFile Class'
+	{
+		CLSID = s '{03270D36-7780-450F-99B9-910C75A83A29}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {03270D36-7780-450F-99B9-910C75A83A29} = s 'MapFile Class'
+		{
+			ProgID = s 'OP2Editor.MapFile.1'
+			VersionIndependentProgID = s 'OP2Editor.MapFile'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}
