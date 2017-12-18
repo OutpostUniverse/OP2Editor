@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d977d49c-37c4-42fa-b52c-411ca93cf9b6}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{63b4766a-017e-4b9d-9723-e48d082d39c1}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e4396236-c8bb-499e-bfc3-5ae77305617f}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="InputOutput">
+      <UniqueIdentifier>{25e34398-0a80-4ba2-b6cc-96a59225c471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{b87bf8b0-e928-4fa4-acf7-df04eecf4859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TileSets">
+      <UniqueIdentifier>{a361e040-d38c-4d9c-b680-0ecd298d4498}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CMapFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CResourceManagerFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OP2Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CClmReader.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CClmWriter.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileStreamReader.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileStreamWriter.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CMemoryStreamReader.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CVolReader.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CVolWriter.cpp">
+      <Filter>InputOutput</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileSet.cpp">
+      <Filter>TileSets</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileSetManager.cpp">
+      <Filter>TileSets</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileSetSource.cpp">
+      <Filter>TileSets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OP2Editor.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CMapFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CResourceManagerFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTileGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CClmReader.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CClmWriter.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileStreamReader.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileStreamWriter.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CMemoryStreamReader.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CVolReader.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CVolWriter.h">
+      <Filter>InputOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="CTileSet.h">
+      <Filter>TileSets</Filter>
+    </ClInclude>
+    <ClInclude Include="CTileSetManager.h">
+      <Filter>TileSets</Filter>
+    </ClInclude>
+    <ClInclude Include="CTileSetSource.h">
+      <Filter>TileSets</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="OP2Editor.idl">
+      <Filter>Interfaces</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="OP2Editor.def">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MapFile.rgs">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
