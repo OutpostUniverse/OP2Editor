@@ -1,10 +1,7 @@
 .vs/
 *.user
 Debug/
-ReleaseMinDependency/
-ReleaseMinSize/
-ReleaseUMinDependency/
-ReleaseUMinSize/
+Release/
 
 OP2Editor.h
 OP2Editor.tlb
