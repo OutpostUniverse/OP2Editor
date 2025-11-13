@@ -70,11 +70,11 @@ BEGIN
     BEGIN
         BLOCK "040904B0"
         BEGIN
-            VALUE "CompanyName", "\0"
+            VALUE "CompanyName", "Outpost Universe\0"
             VALUE "FileDescription", "OP2Editor Module\0"
             VALUE "FileVersion", "1.0.0.2\0"
             VALUE "InternalName", "OP2Editor\0"
-            VALUE "LegalCopyright", "Copyright 2004\0"
+            VALUE "LegalCopyright", "Outpost Universe 2004-2025\0"
             VALUE "OriginalFilename", "OP2Editor.DLL\0"
             VALUE "ProductName", "OP2Editor Module\0"
             VALUE "ProductVersion", "1.0.0.2\0"
