@@ -15,7 +15,7 @@
     <SccLocalPath />
     <Keyword>AtlProj</Keyword>
     <ProjectGuid>{E7666A17-77D3-4DCA-A706-A018977CEB3E}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
