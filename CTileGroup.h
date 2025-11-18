@@ -19,32 +19,32 @@ public:
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileWidth(
-			/* [retval][out] */ int __RPC_FAR *tileWidth);
+		/* [retval][out] */ int __RPC_FAR *tileWidth);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileHeight(
-			/* [retval][out] */ int __RPC_FAR *tileHeight);
+		/* [retval][out] */ int __RPC_FAR *tileHeight);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileSetManager(
-			/* [retval][out] */ TileSetManager __RPC_FAR *__RPC_FAR *tileSetManager);
+		/* [retval][out] */ TileSetManager __RPC_FAR *__RPC_FAR *tileSetManager);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_MappingIndex(
-			/* [in] */ int tileX,
-			/* [in] */ int tileY,
-			/* [retval][out] */ int __RPC_FAR *tileMappingIndex);
+		/* [in] */ int tileX,
+		/* [in] */ int tileY,
+		/* [retval][out] */ int __RPC_FAR *tileMappingIndex);
 	// [propput]
 	HRESULT STDMETHODCALLTYPE put_MappingIndex(
-			/* [in] */ int tileX,
-			/* [in] */ int tileY,
-			/* [in] */ int tileMappingIndex);
+		/* [in] */ int tileX,
+		/* [in] */ int tileY,
+		/* [in] */ int tileMappingIndex);
 
 	HRESULT STDMETHODCALLTYPE Draw(
-			/* [in] */ int destDC,
-			/* [in] */ int sourcePixelX,
-			/* [in] */ int sourcePixelY,
-			/* [in] */ int pixelWidth,
-			/* [in] */ int pixelHeight);
+		/* [in] */ int destDC,
+		/* [in] */ int sourcePixelX,
+		/* [in] */ int sourcePixelY,
+		/* [in] */ int pixelWidth,
+		/* [in] */ int pixelHeight);
 
 
 	// ISupportErrorInfo

@@ -18,13 +18,13 @@ public:
 
 	// [local]
 	HRESULT STDMETHODCALLTYPE Read(
-			/* [in] */ int numBytes,
-			/* [in] */ int pBuffer,
-			/* [retval][out] */ int __RPC_FAR *numBytesRead);
+		/* [in] */ int numBytes,
+		/* [in] */ int pBuffer,
+		/* [retval][out] */ int __RPC_FAR *numBytesRead);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_Status(
-			/* [retval][out] */ int __RPC_FAR *status);
+		/* [retval][out] */ int __RPC_FAR *status);
 
 
 	// SeekableStreamReader
@@ -32,12 +32,12 @@ public:
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_ReadOffset(
-			/* [retval][out] */ int __RPC_FAR *readOffset);
+		/* [retval][out] */ int __RPC_FAR *readOffset);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_StreamSize(
-			/* [retval][out] */ int __RPC_FAR *streamSize);
+		/* [retval][out] */ int __RPC_FAR *streamSize);
 	HRESULT STDMETHODCALLTYPE Seek(
-			/* [in] */ int offset);
+		/* [in] */ int offset);
 
 
 	// Class specific

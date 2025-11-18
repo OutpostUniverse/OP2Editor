@@ -16,11 +16,11 @@ public:
 	// *************
 
 	HRESULT STDMETHODCALLTYPE AddToArchive(
-			/* [in] */ BSTR fileName,
-			/* [in] */ SeekableStreamReader __RPC_FAR *inStream,
-			/* [in] */ int reserved);
+		/* [in] */ BSTR fileName,
+		/* [in] */ SeekableStreamReader __RPC_FAR *inStream,
+		/* [in] */ int reserved);
 	HRESULT STDMETHODCALLTYPE WriteArchive(
-			/* [in] */ StreamWriter __RPC_FAR *outStream);
+		/* [in] */ StreamWriter __RPC_FAR *outStream);
 
 
 	// Class specific
