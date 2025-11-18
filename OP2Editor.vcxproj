@@ -90,7 +90,7 @@
       <ModuleDefinitionFile>.\OP2Editor.def</ModuleDefinitionFile>
     </Link>
     <CustomBuildStep>
-      <Command>regsvr32 /s /c "$(TargetPath)" 
+      <Command>regsvr32 /s /c "$(TargetPath)"
 echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <Message>Performing registration</Message>
       <Outputs>$(OutDir)\regsvr32.trg;%(Outputs)</Outputs>
@@ -137,7 +137,7 @@ echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <ModuleDefinitionFile>.\OP2Editor.def</ModuleDefinitionFile>
     </Link>
     <CustomBuildStep>
-      <Command>regsvr32 /s /c "$(TargetPath)" 
+      <Command>regsvr32 /s /c "$(TargetPath)"
 echo regsvr32 exec. time &gt; "$(OutDir)regsvr32.trg" </Command>
       <Message>Performing registration</Message>
       <Outputs>$(OutDir)\regsvr32.trg;%(Outputs)</Outputs>
