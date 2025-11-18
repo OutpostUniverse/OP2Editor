@@ -12,13 +12,13 @@ public:
 
 	// IFileStreamWriter
     // [local]
-	HRESULT STDMETHODCALLTYPE Write( 
+	HRESULT STDMETHODCALLTYPE Write(
             /* [in] */ int numBytes,
             /* [in] */ int pBuffer,
             /* [retval][out] */ int __RPC_FAR *numBytesWritten);
-        
+
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_Status( 
+	HRESULT STDMETHODCALLTYPE get_Status(
             /* [retval][out] */ int __RPC_FAR *status);
 
 	// Class specific

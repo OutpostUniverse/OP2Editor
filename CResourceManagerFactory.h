@@ -11,7 +11,7 @@ public:
     HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
     // IClassFactory
-    HRESULT __stdcall CreateInstance(IUnknown* pUnknownOuter, 
+    HRESULT __stdcall CreateInstance(IUnknown* pUnknownOuter,
         REFIID riid, void** ppv);
     HRESULT __stdcall LockServer(BOOL bLock);
 

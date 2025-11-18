@@ -18,67 +18,67 @@ public:
 	// *****************
 
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_RootPath( 
+	HRESULT STDMETHODCALLTYPE get_RootPath(
             /* [retval][out] */ BSTR __RPC_FAR *path);
     // [propput]
-	HRESULT STDMETHODCALLTYPE put_RootPath( 
+	HRESULT STDMETHODCALLTYPE put_RootPath(
             /* [in] */ BSTR path);
 
-    HRESULT STDMETHODCALLTYPE OpenStreamRead( 
+    HRESULT STDMETHODCALLTYPE OpenStreamRead(
             /* [in] */ BSTR fileName,
             /* [retval][out] */ StreamReader __RPC_FAR *__RPC_FAR *stream);
-    HRESULT STDMETHODCALLTYPE OpenStreamWrite( 
+    HRESULT STDMETHODCALLTYPE OpenStreamWrite(
             /* [in] */ BSTR fileName,
             /* [retval][out] */ StreamWriter __RPC_FAR *__RPC_FAR *stream);
 
-    HRESULT STDMETHODCALLTYPE LoadMapFile( 
+    HRESULT STDMETHODCALLTYPE LoadMapFile(
             /* [in] */ BSTR fileName,
             /* [in] */ enum MapLoadSaveFormat loadFlags,
             /* [retval][out] */ MapFile __RPC_FAR *__RPC_FAR *mapFile);
-    HRESULT STDMETHODCALLTYPE LoadMap( 
+    HRESULT STDMETHODCALLTYPE LoadMap(
             /* [in] */ StreamReader __RPC_FAR *inStream,
             /* [in] */ enum MapLoadSaveFormat loadFlags,
             /* [retval][out] */ MapFile __RPC_FAR *__RPC_FAR *mapFile);
-    HRESULT STDMETHODCALLTYPE CreateNewMap( 
+    HRESULT STDMETHODCALLTYPE CreateNewMap(
             /* [in] */ int width,
             /* [in] */ int height,
             /* [retval][out] */ MapFile __RPC_FAR *__RPC_FAR *newMap);
-        
-    HRESULT STDMETHODCALLTYPE LoadTileSetFile( 
+
+    HRESULT STDMETHODCALLTYPE LoadTileSetFile(
             /* [in] */ BSTR fileName,
             /* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
-    HRESULT STDMETHODCALLTYPE LoadTileSet( 
+    HRESULT STDMETHODCALLTYPE LoadTileSet(
             /* [in] */ StreamReader __RPC_FAR *inStream,
             /* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
-    HRESULT STDMETHODCALLTYPE CreateTileSet( 
+    HRESULT STDMETHODCALLTYPE CreateTileSet(
             /* [in] */ int numTiles,
             /* [in] */ int bitDepth,
             /* [in] */ int width,
             /* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *newTileSet);
 
-	HRESULT STDMETHODCALLTYPE LoadVolFile( 
+	HRESULT STDMETHODCALLTYPE LoadVolFile(
             /* [in] */ BSTR fileName,
 			/* [in] */ int bAttachToStream,
             /* [retval][out] */ ArchiveReader __RPC_FAR *__RPC_FAR *volReader);
-    HRESULT STDMETHODCALLTYPE LoadVol( 
+    HRESULT STDMETHODCALLTYPE LoadVol(
             /* [in] */ SeekableStreamReader __RPC_FAR *inStream,
 			/* [in] */ int bAttachToStream,
             /* [retval][out] */ ArchiveReader __RPC_FAR *__RPC_FAR *volReader);
-    HRESULT STDMETHODCALLTYPE CreateVolFile( 
+    HRESULT STDMETHODCALLTYPE CreateVolFile(
             /* [retval][out] */ ArchiveWriter __RPC_FAR *__RPC_FAR *volWriter);
 
-    HRESULT STDMETHODCALLTYPE LoadClmFile( 
+    HRESULT STDMETHODCALLTYPE LoadClmFile(
             /* [in] */ BSTR fileName,
             /* [in] */ int bAttachToStream,
-            /* [retval][out] */ ArchiveReader __RPC_FAR *__RPC_FAR *clmReader);    
-    HRESULT STDMETHODCALLTYPE LoadClm( 
+            /* [retval][out] */ ArchiveReader __RPC_FAR *__RPC_FAR *clmReader);
+    HRESULT STDMETHODCALLTYPE LoadClm(
             /* [in] */ SeekableStreamReader __RPC_FAR *inStream,
             /* [in] */ int bAttachToStream,
             /* [retval][out] */ ArchiveReader __RPC_FAR *__RPC_FAR *clmReader);
-    HRESULT STDMETHODCALLTYPE CreateClmFile( 
+    HRESULT STDMETHODCALLTYPE CreateClmFile(
             /* [retval][out] */ ArchiveWriter __RPC_FAR *__RPC_FAR *clmWriter);
 
-	HRESULT STDMETHODCALLTYPE AddArchiveToSearch( 
+	HRESULT STDMETHODCALLTYPE AddArchiveToSearch(
             /* [in] */ ArchiveReader __RPC_FAR *volReader);
     HRESULT STDMETHODCALLTYPE ClearSearchPath(void);
 

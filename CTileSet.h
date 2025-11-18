@@ -13,55 +13,55 @@ public:
 	// ITileSet
 
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_NumTiles( 
+	HRESULT STDMETHODCALLTYPE get_NumTiles(
             /* [retval][out] */ int __RPC_FAR *numTiles);
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_TileSize( 
+	HRESULT STDMETHODCALLTYPE get_TileSize(
             /* [retval][out] */ int __RPC_FAR *tileSize);
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_BitDepth( 
+	HRESULT STDMETHODCALLTYPE get_BitDepth(
             /* [retval][out] */ int __RPC_FAR *bitDepth);
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_NumPaletteEntries( 
-            /* [retval][out] */ int __RPC_FAR *numPaletteEntries);        
+	HRESULT STDMETHODCALLTYPE get_NumPaletteEntries(
+            /* [retval][out] */ int __RPC_FAR *numPaletteEntries);
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_PaletteEntry( 
+	HRESULT STDMETHODCALLTYPE get_PaletteEntry(
             /* [in] */ int index,
-            /* [retval][out] */ int __RPC_FAR *palEntry); 
+            /* [retval][out] */ int __RPC_FAR *palEntry);
     // [propput]
-	HRESULT STDMETHODCALLTYPE put_PaletteEntry( 
+	HRESULT STDMETHODCALLTYPE put_PaletteEntry(
             /* [in] */ int index,
             /* [in] */ int palEntry);
 
-	HRESULT STDMETHODCALLTYPE SetNumTiles( 
+	HRESULT STDMETHODCALLTYPE SetNumTiles(
             /* [in] */ int numTiles);
-    
+
 	// Returns pixel data in native format (as stored in file)
     // [local]
-	HRESULT STDMETHODCALLTYPE GetPixelData( 
+	HRESULT STDMETHODCALLTYPE GetPixelData(
             /* [in] */ int pBuffer,
             /* [in] */ int startOffset,
             /* [in] */ int numBytes);
 	// Sets pixel data in native format (as stored in file)
     // [local]
-	HRESULT STDMETHODCALLTYPE SetPixelData( 
+	HRESULT STDMETHODCALLTYPE SetPixelData(
             /* [in] */ int pBuffer,
             /* [in] */ int startOffset,
             /* [in] */ int numBytes);
-    
+
 
     // [propget]	// **TODO** Remove
-	HRESULT STDMETHODCALLTYPE get_MiniMapColors( 
+	HRESULT STDMETHODCALLTYPE get_MiniMapColors(
             /* [in] */ int tileIndex,
             /* [retval][out] */ int __RPC_FAR *color);
 
-	HRESULT STDMETHODCALLTYPE PasteTile( 
+	HRESULT STDMETHODCALLTYPE PasteTile(
             /* [in] */ int destDC,
             /* [in] */ int pixelX,
             /* [in] */ int pixelY,
             /* [in] */ int tileNum);
-        
-    HRESULT STDMETHODCALLTYPE SaveTileSet( 
+
+    HRESULT STDMETHODCALLTYPE SaveTileSet(
             /* [in] */ StreamWriter __RPC_FAR *stream,
             /* [in] */ enum TileSetSaveFormat saveFormat);
 

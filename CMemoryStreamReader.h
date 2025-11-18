@@ -15,15 +15,15 @@ public:
 
 	// StreamReader
 	// ************
-	
+
 	// [local]
-    HRESULT STDMETHODCALLTYPE Read( 
+    HRESULT STDMETHODCALLTYPE Read(
             /* [in] */ int numBytes,
             /* [in] */ int pBuffer,
             /* [retval][out] */ int __RPC_FAR *numBytesRead);
 
 	// [propget]
-	HRESULT STDMETHODCALLTYPE get_Status( 
+	HRESULT STDMETHODCALLTYPE get_Status(
             /* [retval][out] */ int __RPC_FAR *status);
 
 
@@ -31,12 +31,12 @@ public:
 	// ********************
 
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_ReadOffset( 
-            /* [retval][out] */ int __RPC_FAR *readOffset);    
+	HRESULT STDMETHODCALLTYPE get_ReadOffset(
+            /* [retval][out] */ int __RPC_FAR *readOffset);
     // [propget]
-	HRESULT STDMETHODCALLTYPE get_StreamSize( 
+	HRESULT STDMETHODCALLTYPE get_StreamSize(
             /* [retval][out] */ int __RPC_FAR *streamSize);
-    HRESULT STDMETHODCALLTYPE Seek( 
+    HRESULT STDMETHODCALLTYPE Seek(
             /* [in] */ int offset);
 
 

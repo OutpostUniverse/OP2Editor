@@ -11,11 +11,11 @@ public:
     HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
 	// TileSetSource
-    HRESULT STDMETHODCALLTYPE LoadTileSet( 
+    HRESULT STDMETHODCALLTYPE LoadTileSet(
             /* [in] */ BSTR tileSetName,
             /* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
-        
-    HRESULT STDMETHODCALLTYPE UnloadTileSet( 
+
+    HRESULT STDMETHODCALLTYPE UnloadTileSet(
             /* [in] */ BSTR __RPC_FAR tileSetName);
 
 
