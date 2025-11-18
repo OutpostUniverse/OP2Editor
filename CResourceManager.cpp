@@ -145,8 +145,8 @@ HRESULT CResourceManager::put_RootPath(BSTR newPath)
 
 
 HRESULT CResourceManager::OpenStreamRead(
-            /* [in] */ BSTR fileName,
-            /* [retval][out] */ StreamReader **stream)
+	/* [in] */ BSTR fileName,
+	/* [retval][out] */ StreamReader **stream)
 {
 	int lenFileName = SysStringLen(fileName);
 	int lenPath = SysStringLen(path);
@@ -208,8 +208,8 @@ HRESULT CResourceManager::OpenStreamRead(
 }
 
 HRESULT CResourceManager::OpenStreamWrite(
-            /* [in] */ BSTR fileName,
-            /* [retval][out] */ StreamWriter **stream)
+	/* [in] */ BSTR fileName,
+	/* [retval][out] */ StreamWriter **stream)
 {
 	int lenFileName = SysStringLen(fileName);
 	int lenPath = SysStringLen(path);

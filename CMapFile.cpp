@@ -181,9 +181,9 @@ HRESULT CMapFile::get_AroundTheWorld(int *bAroundTheWorld)
 
 
 HRESULT CMapFile::get_TileData(
-            /* [in] */ int tileX,
-            /* [in] */ int tileY,
-            /* [retval][out] */ int __RPC_FAR *tile)
+	/* [in] */ int tileX,
+	/* [in] */ int tileY,
+	/* [retval][out] */ int __RPC_FAR *tile)
 {
 	// Error check array indicies
 	if ((tileX < 0) || (tileX >= tileWidth) || (tileY < 0) || (tileY >= mapHeadInfo.tileHeight))
