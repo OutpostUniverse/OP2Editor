@@ -7,15 +7,15 @@
 
 ULONG CResourceManagerFactory::AddRef()
 {
-    return ++m_cRef;
+	return ++m_cRef;
 }
 
 ULONG CResourceManagerFactory::Release()
 {
-    if(--m_cRef != 0)
-        return m_cRef;
-    delete this;
-    return 0;
+	if(--m_cRef != 0)
+		return m_cRef;
+	delete this;
+	return 0;
 }
 
 HRESULT CResourceManagerFactory::QueryInterface(REFIID riid, void** ppv)
@@ -36,28 +36,28 @@ HRESULT CResourceManagerFactory::QueryInterface(REFIID riid, void** ppv)
 
 
 HRESULT CResourceManagerFactory::CreateInstance(IUnknown *pUnknownOuter,
-    REFIID riid, void** ppv)
+	REFIID riid, void** ppv)
 {
-    if(pUnknownOuter != NULL)
-        return CLASS_E_NOAGGREGATION;
+	if(pUnknownOuter != NULL)
+		return CLASS_E_NOAGGREGATION;
 
 	// Initialize returned object pointer to NULL
 	*ppv = NULL;
 
-    CResourceManager *pResManager = new CResourceManager(NULL);
-    if(pResManager == NULL)
-        return E_OUTOFMEMORY;
+	CResourceManager *pResManager = new CResourceManager(NULL);
+	if(pResManager == NULL)
+		return E_OUTOFMEMORY;
 
-    HRESULT hr = pResManager->QueryInterface(riid, ppv);
-    pResManager->Release();
-    return hr;
+	HRESULT hr = pResManager->QueryInterface(riid, ppv);
+	pResManager->Release();
+	return hr;
 }
 
 HRESULT CResourceManagerFactory::LockServer(BOOL bLock)
 {
-    if(bLock)
-        g_cLocks++;
-    else
-        g_cLocks--;
-    return S_OK;
+	if(bLock)
+		g_cLocks++;
+	else
+		g_cLocks--;
+	return S_OK;
 }
