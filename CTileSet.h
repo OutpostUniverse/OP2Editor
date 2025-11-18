@@ -5,65 +5,65 @@
 class CTileSet : public TileSet
 {
 public:
-    // IUnknown
-    ULONG __stdcall AddRef();
-    ULONG __stdcall Release();
-    HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
+	// IUnknown
+	ULONG __stdcall AddRef();
+	ULONG __stdcall Release();
+	HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
 	// ITileSet
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_NumTiles(
-            /* [retval][out] */ int __RPC_FAR *numTiles);
-    // [propget]
+			/* [retval][out] */ int __RPC_FAR *numTiles);
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileSize(
-            /* [retval][out] */ int __RPC_FAR *tileSize);
-    // [propget]
+			/* [retval][out] */ int __RPC_FAR *tileSize);
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_BitDepth(
-            /* [retval][out] */ int __RPC_FAR *bitDepth);
-    // [propget]
+			/* [retval][out] */ int __RPC_FAR *bitDepth);
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_NumPaletteEntries(
-            /* [retval][out] */ int __RPC_FAR *numPaletteEntries);
-    // [propget]
+			/* [retval][out] */ int __RPC_FAR *numPaletteEntries);
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_PaletteEntry(
-            /* [in] */ int index,
-            /* [retval][out] */ int __RPC_FAR *palEntry);
-    // [propput]
+			/* [in] */ int index,
+			/* [retval][out] */ int __RPC_FAR *palEntry);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_PaletteEntry(
-            /* [in] */ int index,
-            /* [in] */ int palEntry);
+			/* [in] */ int index,
+			/* [in] */ int palEntry);
 
 	HRESULT STDMETHODCALLTYPE SetNumTiles(
-            /* [in] */ int numTiles);
+			/* [in] */ int numTiles);
 
 	// Returns pixel data in native format (as stored in file)
-    // [local]
+	// [local]
 	HRESULT STDMETHODCALLTYPE GetPixelData(
-            /* [in] */ int pBuffer,
-            /* [in] */ int startOffset,
-            /* [in] */ int numBytes);
+			/* [in] */ int pBuffer,
+			/* [in] */ int startOffset,
+			/* [in] */ int numBytes);
 	// Sets pixel data in native format (as stored in file)
-    // [local]
+	// [local]
 	HRESULT STDMETHODCALLTYPE SetPixelData(
-            /* [in] */ int pBuffer,
-            /* [in] */ int startOffset,
-            /* [in] */ int numBytes);
+			/* [in] */ int pBuffer,
+			/* [in] */ int startOffset,
+			/* [in] */ int numBytes);
 
 
-    // [propget]	// **TODO** Remove
+	// [propget]	// **TODO** Remove
 	HRESULT STDMETHODCALLTYPE get_MiniMapColors(
-            /* [in] */ int tileIndex,
-            /* [retval][out] */ int __RPC_FAR *color);
+			/* [in] */ int tileIndex,
+			/* [retval][out] */ int __RPC_FAR *color);
 
 	HRESULT STDMETHODCALLTYPE PasteTile(
-            /* [in] */ int destDC,
-            /* [in] */ int pixelX,
-            /* [in] */ int pixelY,
-            /* [in] */ int tileNum);
+			/* [in] */ int destDC,
+			/* [in] */ int pixelX,
+			/* [in] */ int pixelY,
+			/* [in] */ int tileNum);
 
-    HRESULT STDMETHODCALLTYPE SaveTileSet(
-            /* [in] */ StreamWriter __RPC_FAR *stream,
-            /* [in] */ enum TileSetSaveFormat saveFormat);
+	HRESULT STDMETHODCALLTYPE SaveTileSet(
+			/* [in] */ StreamWriter __RPC_FAR *stream,
+			/* [in] */ enum TileSetSaveFormat saveFormat);
 
 
 	// Class specific

@@ -6,17 +6,17 @@ class CTileSetSource : public TileSetSource
 {
 public:
 	// IUnknown
-    ULONG __stdcall AddRef();
-    ULONG __stdcall Release();
-    HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
+	ULONG __stdcall AddRef();
+	ULONG __stdcall Release();
+	HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
 	// TileSetSource
-    HRESULT STDMETHODCALLTYPE LoadTileSet(
-            /* [in] */ BSTR tileSetName,
-            /* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
+	HRESULT STDMETHODCALLTYPE LoadTileSet(
+			/* [in] */ BSTR tileSetName,
+			/* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
 
-    HRESULT STDMETHODCALLTYPE UnloadTileSet(
-            /* [in] */ BSTR __RPC_FAR tileSetName);
+	HRESULT STDMETHODCALLTYPE UnloadTileSet(
+			/* [in] */ BSTR __RPC_FAR tileSetName);
 
 
 	// Class specific functions

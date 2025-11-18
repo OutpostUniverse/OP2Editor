@@ -3,11 +3,11 @@
 class CTileSetManager : public TileSetManager, public ISupportErrorInfo
 {
 public:
-    // IUnknown
+	// IUnknown
 	// ********
-    ULONG __stdcall AddRef();
-    ULONG __stdcall Release();
-    HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
+	ULONG __stdcall AddRef();
+	ULONG __stdcall Release();
+	HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
 
 	// ISupportErrorInfo
@@ -18,252 +18,252 @@ public:
 	// TileSetManager
 	// **************
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_NumTileSets(
-            /* [retval][out] */ int __RPC_FAR *numTileSets);
+			/* [retval][out] */ int __RPC_FAR *numTileSets);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileSetName(
-            /* [in] */ int index,
-            /* [retval][out] */ BSTR __RPC_FAR *tileSetName);
+			/* [in] */ int index,
+			/* [retval][out] */ BSTR __RPC_FAR *tileSetName);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileSet(
-            /* [in] */ int index,
-            /* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
+			/* [in] */ int index,
+			/* [retval][out] */ TileSet __RPC_FAR *__RPC_FAR *tileSet);
 
-    HRESULT STDMETHODCALLTYPE AddTileSet(
-            /* [in] */ BSTR tileSetName,
+	HRESULT STDMETHODCALLTYPE AddTileSet(
+			/* [in] */ BSTR tileSetName,
 			/* [retval][out] */ int __RPC_FAR *index);
 
-    HRESULT STDMETHODCALLTYPE RemoveTileSet(
-            /* [in] */ BSTR tileSetName,
+	HRESULT STDMETHODCALLTYPE RemoveTileSet(
+			/* [in] */ BSTR tileSetName,
 			/* [retval][out] */ int __RPC_FAR *index);
 
-    HRESULT STDMETHODCALLTYPE ReplaceTileSet(
-            /* [in] */ int index,
-            /* [in] */ BSTR tileSetName);
+	HRESULT STDMETHODCALLTYPE ReplaceTileSet(
+			/* [in] */ int index,
+			/* [in] */ BSTR tileSetName);
 
-    HRESULT STDMETHODCALLTYPE MapInTiles(
-            /* [in] */ int tileSetIndex,
-            /* [in] */ int startTile,
-            /* [in] */ int numTiles,
+	HRESULT STDMETHODCALLTYPE MapInTiles(
+			/* [in] */ int tileSetIndex,
+			/* [in] */ int startTile,
+			/* [in] */ int numTiles,
 			/* [retval][out] */ int __RPC_FAR *mappingIndex);
 
-    HRESULT STDMETHODCALLTYPE GetMappingIndex(
-            /* [in] */ int tileSetIndex,
-            /* [in] */ int tileIndex,
-            /* [in] */ int numTileReplacements,
-            /* [in] */ int cycleDelay,
-            /* [retval][out] */ int __RPC_FAR *mappingIndex);
+	HRESULT STDMETHODCALLTYPE GetMappingIndex(
+			/* [in] */ int tileSetIndex,
+			/* [in] */ int tileIndex,
+			/* [in] */ int numTileReplacements,
+			/* [in] */ int cycleDelay,
+			/* [retval][out] */ int __RPC_FAR *mappingIndex);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_NumMappings(
-            /* [retval][out] */ int __RPC_FAR *numMappings);
+			/* [retval][out] */ int __RPC_FAR *numMappings);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileSetIndex(
-            /* [in] */ int mappingIndex,
-            /* [retval][out] */ int __RPC_FAR *tileSetIndex);
-    // [propput]
+			/* [in] */ int mappingIndex,
+			/* [retval][out] */ int __RPC_FAR *tileSetIndex);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TileSetIndex(
-            /* [in] */ int mappingIndex,
-            /* [in] */ int tileSetIndex);
+			/* [in] */ int mappingIndex,
+			/* [in] */ int tileSetIndex);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TileSetTileIndex(
-            /* [in] */ int mappingIndex,
-            /* [retval][out] */ int __RPC_FAR *tileSetTileIndex);
-    // [propput]
+			/* [in] */ int mappingIndex,
+			/* [retval][out] */ int __RPC_FAR *tileSetTileIndex);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TileSetTileIndex(
-            /* [in] */ int mappingIndex,
-            /* [in] */ int tileSetTileIndex);
+			/* [in] */ int mappingIndex,
+			/* [in] */ int tileSetTileIndex);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_NumTileReplacements(
-            /* [in] */ int mappingIndex,
-            /* [retval][out] */ int __RPC_FAR *numTileReplacements);
-    // [propput]
+			/* [in] */ int mappingIndex,
+			/* [retval][out] */ int __RPC_FAR *numTileReplacements);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_NumTileReplacements(
-            /* [in] */ int mappingIndex,
-            /* [in] */ int numTileReplacements);
+			/* [in] */ int mappingIndex,
+			/* [in] */ int numTileReplacements);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_CycleDelay(
-            /* [in] */ int mappingIndex,
-            /* [retval][out] */ int __RPC_FAR *cycleDelay);
-    // [propput]
+			/* [in] */ int mappingIndex,
+			/* [retval][out] */ int __RPC_FAR *cycleDelay);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_CycleDelay(
-            /* [in] */ int mappingIndex,
-            /* [in] */ int cycleDelay);
+			/* [in] */ int mappingIndex,
+			/* [in] */ int cycleDelay);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_NumTerrains(
-            /* [retval][out] */ int __RPC_FAR *numTerrains);
-    HRESULT STDMETHODCALLTYPE SetNumTerrains(
-            /* [in] */ int numTerrains);
+			/* [retval][out] */ int __RPC_FAR *numTerrains);
+	HRESULT STDMETHODCALLTYPE SetNumTerrains(
+			/* [in] */ int numTerrains);
 
-    // [propget]
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainStartTile(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *startMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *startMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainStartTile(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int startMapping);
-    // [propget]
+			/* [in] */ int terrainIndex,
+			/* [in] */ int startMapping);
+	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainEndTile(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *endMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *endMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainEndTile(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int endMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int endMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainDozed(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainDozed(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainRubble(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainRubble(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainTubeUnk(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainTubeUnk(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainLavaWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainLavaWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainMicrobeWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainMicrobeWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainNormalWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainNormalWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainDamagedWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainDamagedWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainRuinedWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainRuinedWall(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainLava(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainLava(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainFlat1(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainFlat1(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainFlat2(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainFlat2(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainFlat3(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainFlat3(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainTube(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainTube(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ enum TerrainTubeDirection direction,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainScorched(
-            /* [in] */ int terrainIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [in] */ int terrainIndex,
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainScorched(
-            /* [in] */ int terrainIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int terrainIndex,
+			/* [in] */ int dataMapping);
 
 	// [propget]
 	HRESULT STDMETHODCALLTYPE get_TerrainUnknown(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ int unkIndex,
-            /* [retval][out] */ int __RPC_FAR *dataMapping);
-    // [propput]
+			/* [retval][out] */ int __RPC_FAR *dataMapping);
+	// [propput]
 	HRESULT STDMETHODCALLTYPE put_TerrainUnknown(
-            /* [in] */ int terrainIndex,
+			/* [in] */ int terrainIndex,
 			/* [in] */ int unkIndex,
-            /* [in] */ int dataMapping);
+			/* [in] */ int dataMapping);
 
 	// Class specific
 	// **************
