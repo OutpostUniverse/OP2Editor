@@ -113,7 +113,7 @@ HRESULT CMemoryStreamReader::Seek(int offset)
 // Class specific
 // **************
 
-CMemoryStreamReader::CMemoryStreamReader(int streamLength, char *buffer, int bAttachToBuffer) 
+CMemoryStreamReader::CMemoryStreamReader(int streamLength, char *buffer, int bAttachToBuffer)
 		: m_cRef(1)
 {
 	// Initialize variables

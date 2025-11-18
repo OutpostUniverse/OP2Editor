@@ -184,7 +184,7 @@ HRESULT CTileSetSource::UnloadTileSet(BSTR tileSetName)
 			// Decrement the count
 			current->loadedCount--;
 
-			// Note: Don't free the tile set here since it may likely be loaded again soon 
+			// Note: Don't free the tile set here since it may likely be loaded again soon
 			// **TODO** Handle this possible optimization
 			if (current->loadedCount == 0)
 			{

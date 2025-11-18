@@ -2,7 +2,7 @@
 
 
 // Note: Proxy/Stub Information
-//      To build a separate proxy/stub DLL, 
+//      To build a separate proxy/stub DLL,
 //      run nmake -f OP2Editorps.mk in the project directory.
 
 #include "stdafx.h"
@@ -70,7 +70,7 @@ STDAPI DllRegisterServer(void)
 	int retVal;
 
 	pathLen = GetModuleFileName(g_hInstance, path, MAX_PATH);
-	retVal = RegCreateKeyEx(HKEY_CLASSES_ROOT, 
+	retVal = RegCreateKeyEx(HKEY_CLASSES_ROOT,
 				TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}\\InprocServer32"),
 				0,
 				TEXT(""),

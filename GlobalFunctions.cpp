@@ -18,7 +18,7 @@ void PostErrorMsg(WCHAR *errorMsg)
 
     // Exchange ICreateErrorInfo for IErrorInfo.
     IErrorInfo* pErrorInfo;
-    pCreateErrorInfo->QueryInterface(IID_IErrorInfo, 
+    pCreateErrorInfo->QueryInterface(IID_IErrorInfo,
         (void**)&pErrorInfo);
 
     // Make the error information available to the client.

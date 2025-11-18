@@ -180,7 +180,7 @@ HRESULT CMapFile::get_AroundTheWorld(int *bAroundTheWorld)
 
 
 
-HRESULT CMapFile::get_TileData( 
+HRESULT CMapFile::get_TileData(
             /* [in] */ int tileX,
             /* [in] */ int tileY,
             /* [retval][out] */ int __RPC_FAR *tile)
@@ -812,7 +812,7 @@ HRESULT CMapFile::get_TileGroupName(int tileGroupIndex, BSTR *tileGroupName)
 	int nameLen = tileGroupInfo[tileGroupIndex].nameLen;
 	SysReAllocStringLen(tileGroupName, NULL, nameLen);
 	// Convert the name to unicode
-	MultiByteToWideChar(CP_ACP, 0, tileGroupInfo[tileGroupIndex].name, nameLen, 
+	MultiByteToWideChar(CP_ACP, 0, tileGroupInfo[tileGroupIndex].name, nameLen,
 									*tileGroupName, nameLen);
 
 	return S_OK;
@@ -871,7 +871,7 @@ HRESULT CMapFile::AddTileGroup(TileGroup *newTileGroup)
 	tileGroupInfo[numTileGroups].name = NULL;
 	tileGroupInfo[numTileGroups].tileGroup = newTileGroup;
 	newTileGroup->AddRef();
-	
+
 	// Update number of tile groups
 	numTileGroups++;
 
@@ -990,7 +990,7 @@ int CMapFile::LoadMap(StreamReader *stream, TileSetSource *tileSetSource, int lo
 				stream->Read(4, (int)&height, &numBytesRead);
 				// Create a new TileGroup
 				tileGroupInfo[i].tileGroup = new CTileGroup(width, height, tileSetManager);
-				
+
 				// Read in the tile data
 				for (y = 0; y < height; y++)
 				{
@@ -1093,7 +1093,7 @@ HRESULT CMapFile::SaveMap(StreamWriter *stream, enum MapLoadSaveFormat saveFlags
 			// Write the tile group's dimensions
 			stream->Write(4, (int)&width, &numBytesWritten);
 			stream->Write(4, (int)&height, &numBytesWritten);
-			
+
 			// Write the tile group data
 			for (y = 0; y < height; y++)
 			{
@@ -1105,7 +1105,7 @@ HRESULT CMapFile::SaveMap(StreamWriter *stream, enum MapLoadSaveFormat saveFlags
 					stream->Write(4, (int)&temp, &numBytesWritten);
 				}
 			}
-			
+
 			// Write the tile group's name
 			temp = tileGroupInfo[i].nameLen;
 			stream->Write(4, (int)&temp, &numBytesWritten);
@@ -1138,7 +1138,7 @@ HRESULT CMapFile::InterfaceSupportsErrorInfo(REFIID riid)
 // ***********************
 
 
-CMapFile::CMapFile(TileSetSource *tileSetSource, int width, int height) : 
+CMapFile::CMapFile(TileSetSource *tileSetSource, int width, int height) :
 		m_cRef(1)
 {
 	// Round width up to the next power of 2
@@ -1197,7 +1197,7 @@ CMapFile::CMapFile(TileSetSource *tileSetSource, int width, int height) :
 	g_cLocks++;
 }
 
-CMapFile::CMapFile(TileSetSource *tileSetSource, StreamReader *stream, 
+CMapFile::CMapFile(TileSetSource *tileSetSource, StreamReader *stream,
 				   enum MapLoadSaveFormat loadFlags) : m_cRef(1)
 {
 	// Initialize variables

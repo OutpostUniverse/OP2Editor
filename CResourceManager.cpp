@@ -144,7 +144,7 @@ HRESULT CResourceManager::put_RootPath(BSTR newPath)
 
 
 
-HRESULT CResourceManager::OpenStreamRead( 
+HRESULT CResourceManager::OpenStreamRead(
             /* [in] */ BSTR fileName,
             /* [retval][out] */ StreamReader **stream)
 {
@@ -207,7 +207,7 @@ HRESULT CResourceManager::OpenStreamRead(
 	return E_FAIL;
 }
 
-HRESULT CResourceManager::OpenStreamWrite( 
+HRESULT CResourceManager::OpenStreamWrite(
             /* [in] */ BSTR fileName,
             /* [retval][out] */ StreamWriter **stream)
 {

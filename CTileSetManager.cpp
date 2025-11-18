@@ -505,7 +505,7 @@ HRESULT STDMETHODCALLTYPE CTileSetManager::SetNumTerrains(int numTerrains)
 		PostErrorMsg(L"There must be at least one terrain type in a map.");
 		return E_INVALIDARG;
 	}
-	
+
 	// Allocate space for new terrain array
 	TerrainType *newTerrain = new TerrainType[numTerrains];
 	// Check for allocation error
@@ -516,13 +516,13 @@ HRESULT STDMETHODCALLTYPE CTileSetManager::SetNumTerrains(int numTerrains)
 	}
 	// Zero it
 	memset(newTerrain, 0, sizeof(terrain[0])*numTerrains);
-	
+
 	// Copy the old array into the new one
 	if (numTerrains < this->numTerrains)
 		memcpy(newTerrain, terrain, sizeof(terrain[0])*numTerrains);
 	else
 		memcpy(newTerrain, terrain, sizeof(terrain[0])*this->numTerrains);
-	
+
 	// Release the old memory
 	delete [] terrain;
 	// Update the array pointer & numTerrains var
@@ -1023,7 +1023,7 @@ HRESULT STDMETHODCALLTYPE CTileSetManager::put_TerrainUnknown(int terrainIndex, 
 // Constructor/Destructor
 // **********************
 
-CTileSetManager::CTileSetManager(TileSetSource *tileSetSource) : 
+CTileSetManager::CTileSetManager(TileSetSource *tileSetSource) :
 	m_cRef(1), tileSource(tileSetSource)
 {
 	// Initialize variables
@@ -1193,7 +1193,7 @@ int CTileSetManager::Load(StreamReader *stream)
 				// Allocate space for a BSTR to hold the name
 				tileSetInfo[i].wideTileSetName = SysAllocStringLen(NULL, temp);
 				// Convert the name to unicode
-				MultiByteToWideChar(CP_ACP, 0, tileSetInfo[i].tileSetName, temp, 
+				MultiByteToWideChar(CP_ACP, 0, tileSetInfo[i].tileSetName, temp,
 									tileSetInfo[i].wideTileSetName, temp);
 				// Load the associated tile set
 				tileSource->LoadTileSet(tileSetInfo[i].wideTileSetName, &tileSet->tileSet);
@@ -1206,7 +1206,7 @@ int CTileSetManager::Load(StreamReader *stream)
 			}
 		}
 
-		
+
 		// Load Tile Set mapping info
 		// Read the string "TILE SET", 0x1A, 0
 		stream->Read(0xA, (int)buff, &numBytesRead);
