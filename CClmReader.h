@@ -7,25 +7,25 @@ class CClmReader : public ArchiveReader
 public:
 	// IUnknown
 	// ********
-    ULONG __stdcall AddRef();
-    ULONG __stdcall Release();
-    HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
+	ULONG __stdcall AddRef();
+	ULONG __stdcall Release();
+	HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
 
 	// ArchiveReader
 	// *************
 
-    // [propget]
-	HRESULT STDMETHODCALLTYPE get_NumFiles( 
-            /* [retval][out] */ int __RPC_FAR *numFiles);
-    // [propget]
-	HRESULT STDMETHODCALLTYPE get_FileName( 
-            /* [in] */ int index,
-            /* [retval][out] */ BSTR __RPC_FAR *fileName);
-        
-    HRESULT STDMETHODCALLTYPE OpenStreamRead( 
-            /* [in] */ BSTR filename,
-            /* [retval][out] */ StreamReader __RPC_FAR *__RPC_FAR *stream);
+	// [propget]
+	HRESULT STDMETHODCALLTYPE get_NumFiles(
+		/* [retval][out] */ int __RPC_FAR *numFiles);
+	// [propget]
+	HRESULT STDMETHODCALLTYPE get_FileName(
+		/* [in] */ int index,
+		/* [retval][out] */ BSTR __RPC_FAR *fileName);
+
+	HRESULT STDMETHODCALLTYPE OpenStreamRead(
+		/* [in] */ BSTR filename,
+		/* [retval][out] */ StreamReader __RPC_FAR *__RPC_FAR *stream);
 
 
 	// Class specific

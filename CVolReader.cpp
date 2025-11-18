@@ -23,18 +23,18 @@ ULONG __stdcall CVolReader::Release()
 
 HRESULT __stdcall CVolReader::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_ArchiveReader)
-        *ppv = (ArchiveReader*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_ArchiveReader)
+		*ppv = (ArchiveReader*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -91,7 +91,7 @@ HRESULT CVolReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 	// Check if data is loaded into memory
 	if (buffer == NULL)
 	{
-		// Data is not loaded into memory. 
+		// Data is not loaded into memory.
 		// Check if attached stream does not exist
 		if (attachedStream == NULL)
 		{
@@ -135,7 +135,7 @@ HRESULT CVolReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 			// Copy the data into a memory stream
 			CMemoryStreamReader *rawStream;
 
-			rawStream = new CMemoryStreamReader(indexTable[fileIndex].fileSize, 
+			rawStream = new CMemoryStreamReader(indexTable[fileIndex].fileSize,
 												(char*)buffer,
 												bAttachToBuffer);
 			if (rawStream == NULL)
@@ -401,8 +401,8 @@ int CVolReader::GetFileIndex(BSTR fileName)
 		// Get the midpoint
 		middleIndex = (startIndex + endIndex) >> 1;
 		// Check if strings match
-		result = strncmp((char*)stringBuffer + indexTable[middleIndex].fileNameOffset, 
-							tempString, 
+		result = strncmp((char*)stringBuffer + indexTable[middleIndex].fileNameOffset,
+							tempString,
 							stringLength);
 		if (result == 0)
 		{

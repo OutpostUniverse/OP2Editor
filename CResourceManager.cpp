@@ -29,20 +29,20 @@ ULONG __stdcall CResourceManager::Release()
 
 HRESULT __stdcall CResourceManager::QueryInterface(REFIID riid, void** ppv)
 {
-    if (riid == IID_IUnknown)
-        *ppv = (IUnknown*)(ResourceManager*)this;
-    else if (riid == IID_IResourceManager)
-        *ppv = (IResourceManager*)this;
+	if (riid == IID_IUnknown)
+		*ppv = (IUnknown*)(ResourceManager*)this;
+	else if (riid == IID_IResourceManager)
+		*ppv = (IResourceManager*)this;
 	else if (riid == IID_ISupportErrorInfo)
 		*ppv = (ISupportErrorInfo*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -144,9 +144,9 @@ HRESULT CResourceManager::put_RootPath(BSTR newPath)
 
 
 
-HRESULT CResourceManager::OpenStreamRead( 
-            /* [in] */ BSTR fileName,
-            /* [retval][out] */ StreamReader **stream)
+HRESULT CResourceManager::OpenStreamRead(
+	/* [in] */ BSTR fileName,
+	/* [retval][out] */ StreamReader **stream)
 {
 	int lenFileName = SysStringLen(fileName);
 	int lenPath = SysStringLen(path);
@@ -207,9 +207,9 @@ HRESULT CResourceManager::OpenStreamRead(
 	return E_FAIL;
 }
 
-HRESULT CResourceManager::OpenStreamWrite( 
-            /* [in] */ BSTR fileName,
-            /* [retval][out] */ StreamWriter **stream)
+HRESULT CResourceManager::OpenStreamWrite(
+	/* [in] */ BSTR fileName,
+	/* [retval][out] */ StreamWriter **stream)
 {
 	int lenFileName = SysStringLen(fileName);
 	int lenPath = SysStringLen(path);

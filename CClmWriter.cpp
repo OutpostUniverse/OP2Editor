@@ -24,18 +24,18 @@ ULONG __stdcall CClmWriter::Release()
 
 HRESULT __stdcall CClmWriter::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_ArchiveWriter)
-        *ppv = (ArchiveWriter*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_ArchiveWriter)
+		*ppv = (ArchiveWriter*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -269,7 +269,7 @@ CClmWriter::LinkedListNode* CClmWriter::SortIndex(LinkedListNode *list)
 				// Check for proper sorted order
 				else if (strcmp(tape[0].head->indexEntry.fileName, tape[1].head->indexEntry.fileName) < 0)
 					sourceTape = 0;			// Node on tape[0] comes before
-				else 
+				else
 					sourceTape = 1;			// Node on tape[1] comes before
 
 				// Move the node from the source tape to the dest tape

@@ -26,18 +26,18 @@ ULONG __stdcall CClmReader::Release()
 
 HRESULT __stdcall CClmReader::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_ArchiveReader)
-        *ppv = (ArchiveReader*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_ArchiveReader)
+		*ppv = (ArchiveReader*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -114,7 +114,7 @@ HRESULT CClmReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 		// CLM file much less memory intensive.
 
 		// Create a memory stream reading with the file contents
-		memStream = new CMemoryStreamReader(indexTable[fileIndex].size, 
+		memStream = new CMemoryStreamReader(indexTable[fileIndex].size,
 											(char*)(dataBuffer[fileIndex]),
 											bAttachToBuffer);
 		if (memStream == NULL)
@@ -162,7 +162,7 @@ CClmReader::CClmReader(SeekableStreamReader *inStream, int bAttachToStream) : m_
 		inStream->AddRef();
 	}
 
-	
+
 	// Load the Clm info from the stream
 	if (LoadClm(inStream, bAttachToStream) != 0)
 	{

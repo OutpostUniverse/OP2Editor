@@ -24,18 +24,18 @@ ULONG __stdcall CFileStreamWriter::Release()
 
 HRESULT __stdcall CFileStreamWriter::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_StreamWriter)
-        *ppv = (StreamWriter*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_StreamWriter)
+		*ppv = (StreamWriter*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -46,14 +46,14 @@ CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)
 	// Initialize class variables
 	status = 0;
 
-	// Open the file 
+	// Open the file
 	hFile = CreateFileW(fileName,		// lpFileName
 						GENERIC_WRITE,	// dwDesired access
 						0,				// dwShareMode
 						NULL,			// lpSecurityAttributes
 						CREATE_ALWAYS,	// dwCreationDisposition
-						FILE_ATTRIBUTE_NORMAL | 
-						FILE_FLAG_SEQUENTIAL_SCAN,	
+						FILE_ATTRIBUTE_NORMAL |
+						FILE_FLAG_SEQUENTIAL_SCAN,
 										// dwFlagsAndAttributes
 						NULL			// hTemplate
 						);
@@ -66,7 +66,7 @@ CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)
 	if (hFile == 0)
 	{
 		// Try to open the file using ANSI version of CreateFile
-		
+
 		// Allocate space for a temporary ASCII fileName string
 		int stringLength = SysStringLen(fileName);
 		char *tempString = new char[stringLength+1];
@@ -80,8 +80,8 @@ CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)
 							0,				// dwShareMode
 							NULL,			// lpSecurityAttributes
 							CREATE_ALWAYS,	// dwCreationDisposition
-							FILE_ATTRIBUTE_NORMAL | 
-							FILE_FLAG_SEQUENTIAL_SCAN,	
+							FILE_ATTRIBUTE_NORMAL |
+							FILE_FLAG_SEQUENTIAL_SCAN,
 											// dwFlagsAndAttributes
 							NULL			// hTemplate
 						);

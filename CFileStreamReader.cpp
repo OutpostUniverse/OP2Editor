@@ -24,20 +24,20 @@ ULONG __stdcall CFileStreamReader::Release()
 
 HRESULT __stdcall CFileStreamReader::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_StreamReader)
-        *ppv = (StreamReader*)this;
-    else if(riid == IID_SeekableStreamReader)
-        *ppv = (SeekableStreamReader*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_StreamReader)
+		*ppv = (StreamReader*)this;
+	else if(riid == IID_SeekableStreamReader)
+		*ppv = (SeekableStreamReader*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -116,14 +116,14 @@ CFileStreamReader::CFileStreamReader(BSTR fileName) : m_cRef(1)
 	// Initialize class variables
 	status = 0;
 
-	// Open the file 
+	// Open the file
 	hFile = CreateFileW(fileName,		// lpFileName
 						GENERIC_READ,	// dwDesired access
 						FILE_SHARE_READ,// dwShareMode
 						NULL,			// lpSecurityAttributes
 						OPEN_EXISTING,	// dwCreationDisposition
-						FILE_ATTRIBUTE_NORMAL | 
-						FILE_FLAG_SEQUENTIAL_SCAN,	
+						FILE_ATTRIBUTE_NORMAL |
+						FILE_FLAG_SEQUENTIAL_SCAN,
 										// dwFlagsAndAttributes
 						NULL			// hTemplate
 						);
@@ -136,7 +136,7 @@ CFileStreamReader::CFileStreamReader(BSTR fileName) : m_cRef(1)
 	if (hFile == 0)
 	{
 		// Try to open the file using ANSI version of CreateFile
-		
+
 		// Allocate space for a temporary ASCII fileName string
 		int stringLength = SysStringLen(fileName);
 		char *tempString = new char[stringLength+1];
@@ -150,8 +150,8 @@ CFileStreamReader::CFileStreamReader(BSTR fileName) : m_cRef(1)
 							FILE_SHARE_READ,// dwShareMode
 							NULL,			// lpSecurityAttributes
 							OPEN_EXISTING,	// dwCreationDisposition
-							FILE_ATTRIBUTE_NORMAL | 
-							FILE_FLAG_SEQUENTIAL_SCAN,	
+							FILE_ATTRIBUTE_NORMAL |
+							FILE_FLAG_SEQUENTIAL_SCAN,
 											// dwFlagsAndAttributes
 							NULL			// hTemplate
 						);

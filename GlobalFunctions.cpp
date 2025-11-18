@@ -7,26 +7,26 @@
 void PostErrorMsg(WCHAR *errorMsg)
 {
 	// Provide rich error information
-    // Create generic error object.
-    ICreateErrorInfo* pCreateErrorInfo;
-    if (FAILED(CreateErrorInfo(&pCreateErrorInfo)))
+	// Create generic error object.
+	ICreateErrorInfo* pCreateErrorInfo;
+	if (FAILED(CreateErrorInfo(&pCreateErrorInfo)))
 		return;
 
-    // Set rich error information.
+	// Set rich error information.
 	pCreateErrorInfo->SetDescription(errorMsg);
-    //pCreateErrorInfo->SetGUID(IID_MapFile);
+	//pCreateErrorInfo->SetGUID(IID_MapFile);
 
-    // Exchange ICreateErrorInfo for IErrorInfo.
-    IErrorInfo* pErrorInfo;
-    pCreateErrorInfo->QueryInterface(IID_IErrorInfo, 
-        (void**)&pErrorInfo);
+	// Exchange ICreateErrorInfo for IErrorInfo.
+	IErrorInfo* pErrorInfo;
+	pCreateErrorInfo->QueryInterface(IID_IErrorInfo,
+		(void**)&pErrorInfo);
 
-    // Make the error information available to the client.
-    SetErrorInfo(NULL, pErrorInfo);
+	// Make the error information available to the client.
+	SetErrorInfo(NULL, pErrorInfo);
 
-    // Release the interface pointers.
-    pErrorInfo->Release();
-    pCreateErrorInfo->Release();
+	// Release the interface pointers.
+	pErrorInfo->Release();
+	pCreateErrorInfo->Release();
 }
 
 

@@ -7,20 +7,20 @@ class CClmWriter : public ArchiveWriter
 public:
 	// IUnknown
 	// ********
-    ULONG __stdcall AddRef();
-    ULONG __stdcall Release();
-    HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
+	ULONG __stdcall AddRef();
+	ULONG __stdcall Release();
+	HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
 
 
 	// ArchiveWriter
 	// *************
 
-    HRESULT STDMETHODCALLTYPE AddToArchive( 
-            /* [in] */ BSTR fileName,
-            /* [in] */ SeekableStreamReader __RPC_FAR *inStream,
-            /* [in] */ int reserved);
-    HRESULT STDMETHODCALLTYPE WriteArchive( 
-            /* [in] */ StreamWriter __RPC_FAR *outStream);
+	HRESULT STDMETHODCALLTYPE AddToArchive(
+		/* [in] */ BSTR fileName,
+		/* [in] */ SeekableStreamReader __RPC_FAR *inStream,
+		/* [in] */ int reserved);
+	HRESULT STDMETHODCALLTYPE WriteArchive(
+		/* [in] */ StreamWriter __RPC_FAR *outStream);
 
 
 	// Class specific

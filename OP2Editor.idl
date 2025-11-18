@@ -209,7 +209,7 @@ interface TileSetManager : IUnknown
 
 	[ helpstring("Expands or contracts the internal buffer to hold the specified number of terrains. Previous terrains are copied into the new buffer.") ]
 	HRESULT SetNumTerrains([in] int numTerrains);
-	
+
 	// Terrain sets
 	[ v1_enum, helpstring("Enum used to control the direction for tube/wall terrain data.") ]
 	enum TerrainTubeDirection
@@ -240,7 +240,7 @@ interface TileSetManager : IUnknown
 	HRESULT TerrainEndTile([in] int terrainIndex, [out, retval] int *endMapping);
 	[ propput, helpstring("Sets the ending mapping index for a given terrain set.") ]
 	HRESULT TerrainEndTile([in] int terrainIndex, [in] int endMapping);
-	
+
 	[ propget, helpstring("Bulldozed tile index for a given terrain set.") ]
 	HRESULT TerrainDozed([in] int terrainIndex, [out, retval] int *dataMapping);
 	[ propput, helpstring("Sets the bulldozed tile index for a given terrain set.") ]
@@ -341,8 +341,8 @@ interface TileGroup : IUnknown
 	HRESULT MappingIndex([in] int tileX, [in] int tileY, [in] int tileMappingIndex);
 
 	// Display
-	// **TODO** Include more parameters: 
-	//		Zoom, 
+	// **TODO** Include more parameters:
+	//		Zoom,
 	//		flags (Normal, Passable/CellType display, LavaPossible, Lava, Blight, Wall or Building, Expand, Display Units/Map only)
 	[ helpstring("Draws a section of the tile group to the given device context at the desired location.") ]
 	HRESULT Draw([in] int destDC, [in] int sourcePixelX, [in] int sourcePixelY, [in] int pixelWidth, [in] int pixelHeight);

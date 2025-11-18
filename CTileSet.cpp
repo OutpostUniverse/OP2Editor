@@ -24,18 +24,18 @@ ULONG __stdcall CTileSet::Release()
 
 HRESULT __stdcall CTileSet::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_TileSet)
-        *ppv = (TileSet*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_TileSet)
+		*ppv = (TileSet*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -187,7 +187,7 @@ HRESULT CTileSet::get_MiniMapColors(int tileIndex, int *color)
 // Pastes the specified tile to the destination Device Context at the given coordinates
 HRESULT CTileSet::PasteTile(int destDC, int pixelX, int pixelY, int tileNum)
 {
-	// Paste the tile to the destDC at given coordinates. Note: Tile are assumed 
+	// Paste the tile to the destDC at given coordinates. Note: Tile are assumed
 	// to be square, and stored in the bitmap as a column of tiles.
 	BitBlt((HDC)destDC, pixelX, pixelY, headInfo.width, headInfo.width, memDC, 0, tileNum*headInfo.width, SRCCOPY);
 
@@ -423,7 +423,7 @@ int CTileSet::LoadTileSet(StreamReader *stream)
 
 						break;
 					case 'atad':	// data
-						// Check for format errors 
+						// Check for format errors
 						// Check if palette data section already read
 						if (bmInfo->bmiHeader.biClrUsed != 0)
 						{
@@ -595,7 +595,7 @@ int CTileSet::SaveTileSet(StreamWriter *stream)
 	{
 		// Write the Palette section
 		sectHead.tag = 'LAPP';		// PPAL tag
-		sectHead.size = bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD) + 
+		sectHead.size = bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD) +
 						sizeof(sectHead)*2 + 8;
 		stream->Write(sizeof(sectHead), (int)&sectHead, &numBytesWritten);
 		// Write the "head" section of the "PPAL" section
@@ -618,7 +618,7 @@ int CTileSet::SaveTileSet(StreamWriter *stream)
 			destPal->rgbBlue = srcPal->rgbRed;
 			destPal->rgbReserved = srcPal->rgbReserved;
 		}
-		stream->Write(bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD), 
+		stream->Write(bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD),
 						(int)&tempPal, &numBytesWritten);
 	}
 
@@ -731,8 +731,8 @@ void CTileSet::CalcMiniMapColors(int startTile, int endTile)
 			for (x = 0; x < headInfo.width; x++)
 			{
 				// Add the color components of this pixel
-				pixelDataOffset = tileNum*tileByteSize + 
-									y*scanlineByteWidth + 
+				pixelDataOffset = tileNum*tileByteSize +
+									y*scanlineByteWidth +
 									((x*headInfo.bitDepth) >> 3);
 				switch(headInfo.bitDepth)
 				{

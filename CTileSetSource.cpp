@@ -21,18 +21,18 @@ ULONG __stdcall CTileSetSource::Release()
 
 HRESULT __stdcall CTileSetSource::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_TileSetSource)
-        *ppv = (TileSetSource*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_TileSetSource)
+		*ppv = (TileSetSource*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
@@ -184,7 +184,7 @@ HRESULT CTileSetSource::UnloadTileSet(BSTR tileSetName)
 			// Decrement the count
 			current->loadedCount--;
 
-			// Note: Don't free the tile set here since it may likely be loaded again soon 
+			// Note: Don't free the tile set here since it may likely be loaded again soon
 			// **TODO** Handle this possible optimization
 			if (current->loadedCount == 0)
 			{

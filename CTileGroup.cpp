@@ -25,18 +25,18 @@ ULONG __stdcall CTileGroup::Release()
 
 HRESULT __stdcall CTileGroup::QueryInterface(REFIID riid, void** ppv)
 {
-    if (riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if (riid == IID_TileGroup)
-        *ppv = (TileGroup*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if (riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if (riid == IID_TileGroup)
+		*ppv = (TileGroup*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
