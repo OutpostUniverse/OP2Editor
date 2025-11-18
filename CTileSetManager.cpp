@@ -28,20 +28,20 @@ ULONG __stdcall CTileSetManager::Release()
 
 HRESULT __stdcall CTileSetManager::QueryInterface(REFIID riid, void** ppv)
 {
-    if (riid == IID_IUnknown)
-        *ppv = (IUnknown*)(TileSetManager*)this;
-    else if (riid == IID_TileSetManager)
-        *ppv = (TileSetManager*)this;
+	if (riid == IID_IUnknown)
+		*ppv = (IUnknown*)(TileSetManager*)this;
+	else if (riid == IID_TileSetManager)
+		*ppv = (TileSetManager*)this;
 	else if (riid == IID_ISupportErrorInfo)
 		*ppv = (ISupportErrorInfo*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 

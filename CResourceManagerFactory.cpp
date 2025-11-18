@@ -20,17 +20,17 @@ ULONG CResourceManagerFactory::Release()
 
 HRESULT CResourceManagerFactory::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_IClassFactory)
-        *ppv = (IClassFactory*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
-    return S_OK;
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_IClassFactory)
+		*ppv = (IClassFactory*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
+	return S_OK;
 }
 
 

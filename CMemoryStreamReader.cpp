@@ -24,20 +24,20 @@ ULONG __stdcall CMemoryStreamReader::Release()
 
 HRESULT __stdcall CMemoryStreamReader::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_StreamReader)
-        *ppv = (StreamReader*)this;
-    else if(riid == IID_SeekableStreamReader)
-        *ppv = (SeekableStreamReader*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_StreamReader)
+		*ppv = (StreamReader*)this;
+	else if(riid == IID_SeekableStreamReader)
+		*ppv = (SeekableStreamReader*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 

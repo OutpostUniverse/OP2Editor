@@ -29,20 +29,20 @@ ULONG __stdcall CResourceManager::Release()
 
 HRESULT __stdcall CResourceManager::QueryInterface(REFIID riid, void** ppv)
 {
-    if (riid == IID_IUnknown)
-        *ppv = (IUnknown*)(ResourceManager*)this;
-    else if (riid == IID_IResourceManager)
-        *ppv = (IResourceManager*)this;
+	if (riid == IID_IUnknown)
+		*ppv = (IUnknown*)(ResourceManager*)this;
+	else if (riid == IID_IResourceManager)
+		*ppv = (IResourceManager*)this;
 	else if (riid == IID_ISupportErrorInfo)
 		*ppv = (ISupportErrorInfo*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 

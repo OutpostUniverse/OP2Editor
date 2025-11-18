@@ -26,20 +26,20 @@ ULONG __stdcall CMapFile::Release()
 
 HRESULT __stdcall CMapFile::QueryInterface(REFIID riid, void** ppv)
 {
-    if (riid == IID_IUnknown)
-        *ppv = (IUnknown*)(MapFile*)this;
-    else if (riid == IID_MapFile)
-        *ppv = (MapFile*)this;
+	if (riid == IID_IUnknown)
+		*ppv = (IUnknown*)(MapFile*)this;
+	else if (riid == IID_MapFile)
+		*ppv = (MapFile*)this;
 	else if (riid == IID_ISupportErrorInfo)
 		*ppv = (ISupportErrorInfo*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 

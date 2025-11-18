@@ -21,18 +21,18 @@ ULONG __stdcall CVolWriter::Release()
 
 HRESULT __stdcall CVolWriter::QueryInterface(REFIID riid, void** ppv)
 {
-    if(riid == IID_IUnknown)
-        *ppv = (IUnknown*)this;
-    else if(riid == IID_ArchiveWriter)
-        *ppv = (ArchiveWriter*)this;
-    else
-    {
-        *ppv = NULL;
-        return E_NOINTERFACE;
-    }
-    AddRef();
+	if(riid == IID_IUnknown)
+		*ppv = (IUnknown*)this;
+	else if(riid == IID_ArchiveWriter)
+		*ppv = (ArchiveWriter*)this;
+	else
+	{
+		*ppv = NULL;
+		return E_NOINTERFACE;
+	}
+	AddRef();
 
-    return S_OK;
+	return S_OK;
 }
 
 
