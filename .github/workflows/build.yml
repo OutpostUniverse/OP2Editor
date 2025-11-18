@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    strategy:
+      fail-fast: false
+      matrix:
+        config: [Debug, Release]
+    runs-on: windows-2025
+    env:
+      Platform: x86
+      Configuration: ${{ matrix.config }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.3.2
+
+    - name: Build
+      run: |
+        msbuild . /maxCpuCount /property:RunCodeAnalysis=true
