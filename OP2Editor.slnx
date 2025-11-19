@@ -2,5 +2,5 @@
   <Configurations>
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="OP2Editor.vcxproj" />
+  <Project Path="OP2Editor.vcxproj" Id="e7666a17-77d3-4dca-a706-a018977ceb3e" />
 </Solution>
