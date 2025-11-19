@@ -2,7 +2,7 @@
 
 #include "OP2Editor.h"
 #include "CTileGroup.h"
-//#include "CTileSetManager.h"
+#include "CTileSetManager.h"
 
 
 class CMapFile : public MapFile, public ISupportErrorInfo
