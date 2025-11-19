@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CResourceManager.h"
 #include "CFileStreamReader.h"

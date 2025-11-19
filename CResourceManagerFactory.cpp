@@ -1,8 +1,6 @@
-
 #include "stdafx.h"
 #include "CResourceManagerFactory.h"
 #include "CResourceManager.h"
-
 
 
 ULONG CResourceManagerFactory::AddRef()

@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "OP2Editor.h"
 #include "CTileSetManager.h"

@@ -1,5 +1,3 @@
-
-
 #include "stdafx.h"
 #include "CMapFile.h"
 #include "GlobalFunctions.h"
