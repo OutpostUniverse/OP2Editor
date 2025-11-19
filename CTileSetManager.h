@@ -1,3 +1,4 @@
+#pragma once
 
 
 class CTileSetManager : public TileSetManager, public ISupportErrorInfo
