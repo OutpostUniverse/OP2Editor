@@ -35,7 +35,6 @@ HRESULT __stdcall CVolWriter::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 // ArchiveWriter
 // *************
 

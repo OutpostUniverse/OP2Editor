@@ -40,7 +40,6 @@ HRESULT __stdcall CMemoryStreamReader::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 // StreamReader
 // ************
 

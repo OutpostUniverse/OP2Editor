@@ -137,7 +137,6 @@ HRESULT CTileGroup::Draw(int destDC, int sourcePixelX, int sourcePixelY, int pix
 }
 
 
-
 // Class specific
 // **************
 

@@ -40,7 +40,6 @@ HRESULT __stdcall CFileStreamReader::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 // StreamReader
 // ************
 
@@ -103,8 +102,6 @@ HRESULT CFileStreamReader::Seek(int offset)
 
 	return S_OK;
 }
-
-
 
 
 // Class specific

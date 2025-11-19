@@ -40,7 +40,6 @@ HRESULT __stdcall CClmReader::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 // ArchiveReader
 // *************
 
@@ -139,8 +138,6 @@ HRESULT CClmReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 
 	return hr;
 }
-
-
 
 
 // Class specific

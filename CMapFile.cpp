@@ -164,7 +164,6 @@ HRESULT CMapFile::Draw(int destDC, int sourcePixelX, int sourcePixelY, int pixel
 }
 
 
-
 // MapFile functions
 // *****************
 
@@ -175,7 +174,6 @@ HRESULT CMapFile::get_AroundTheWorld(int *bAroundTheWorld)
 
 	return S_OK;
 }
-
 
 
 HRESULT CMapFile::get_TileData(
@@ -1116,9 +1114,6 @@ HRESULT CMapFile::SaveMap(StreamWriter *stream, enum MapLoadSaveFormat saveFlags
 }
 
 
-
-
-
 // ISupportErrorInfo
 // *****************
 
@@ -1131,10 +1126,8 @@ HRESULT CMapFile::InterfaceSupportsErrorInfo(REFIID riid)
 }
 
 
-
 // Constructors/Destructor
 // ***********************
-
 
 CMapFile::CMapFile(TileSetSource *tileSetSource, int width, int height) :
 		m_cRef(1)

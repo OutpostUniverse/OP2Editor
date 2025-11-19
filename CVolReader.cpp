@@ -37,7 +37,6 @@ HRESULT __stdcall CVolReader::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 // ArchiveReader
 // *************
 

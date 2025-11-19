@@ -38,8 +38,6 @@ HRESULT __stdcall CFileStreamWriter::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
-
 CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)
 {
 	// Initialize class variables

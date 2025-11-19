@@ -38,7 +38,6 @@ HRESULT __stdcall CClmWriter::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 // ArchiveWriter
 // *************
 

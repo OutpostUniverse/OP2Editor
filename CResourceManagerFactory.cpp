@@ -32,7 +32,6 @@ HRESULT CResourceManagerFactory::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
 HRESULT CResourceManagerFactory::CreateInstance(IUnknown *pUnknownOuter,
 	REFIID riid, void** ppv)
 {

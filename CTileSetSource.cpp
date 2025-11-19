@@ -35,8 +35,6 @@ HRESULT __stdcall CTileSetSource::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-
-
 CTileSetSource::CTileSetSource(IResourceManager *resourceManager) : m_cRef(1)
 {
 	head = NULL;	// Initialize linked list of loaded files to empty
