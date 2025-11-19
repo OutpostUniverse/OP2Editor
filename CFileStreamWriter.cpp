@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CFileStreamWriter.h"
 
@@ -37,8 +36,6 @@ HRESULT __stdcall CFileStreamWriter::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
-
 
 
 CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)

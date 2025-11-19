@@ -1,6 +1,8 @@
+#pragma once
 
 #include "OP2Editor.h"
 #include "CTileSet.h"
+
 
 class CTileSetSource : public TileSetSource
 {

@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CVolReader.h"
 #include "CMemoryStreamReader.h"
@@ -36,7 +35,6 @@ HRESULT __stdcall CVolReader::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
 
 
 // ArchiveReader

@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CTileGroup.h"
 #include "GlobalFunctions.h"
@@ -136,7 +135,6 @@ HRESULT CTileGroup::Draw(int destDC, int sourcePixelX, int sourcePixelY, int pix
 
 	return S_OK;
 }
-
 
 
 // Class specific

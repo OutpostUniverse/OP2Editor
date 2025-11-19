@@ -1,3 +1,4 @@
+#pragma once
 
 extern int g_cLocks;
 

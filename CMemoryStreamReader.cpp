@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CMemoryStreamReader.h"
 
@@ -39,7 +38,6 @@ HRESULT __stdcall CMemoryStreamReader::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
 
 
 // StreamReader

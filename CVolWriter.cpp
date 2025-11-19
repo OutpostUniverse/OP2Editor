@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CVolWriter.h"
 
@@ -34,7 +33,6 @@ HRESULT __stdcall CVolWriter::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
 
 
 // ArchiveWriter

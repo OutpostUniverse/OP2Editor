@@ -1,3 +1,4 @@
+#pragma once
 
 #include "OP2Editor.h"
 

@@ -101,7 +101,6 @@ HRESULT CTileSet::put_PaletteEntry(int index, int palEntry)
 }
 
 
-
 HRESULT CTileSet::SetNumTiles(int newNumTiles)
 {
 	HBITMAP newTileSet;
@@ -217,10 +216,8 @@ HRESULT CTileSet::SaveTileSet(StreamWriter *stream, enum TileSetSaveFormat saveF
 }
 
 
-
 // Private functions
 // *****************
-
 
 // Constructors
 // ************

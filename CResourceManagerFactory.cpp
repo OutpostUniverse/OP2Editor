@@ -1,8 +1,6 @@
-
 #include "stdafx.h"
 #include "CResourceManagerFactory.h"
 #include "CResourceManager.h"
-
 
 
 ULONG CResourceManagerFactory::AddRef()
@@ -32,7 +30,6 @@ HRESULT CResourceManagerFactory::QueryInterface(REFIID riid, void** ppv)
 	AddRef();
 	return S_OK;
 }
-
 
 
 HRESULT CResourceManagerFactory::CreateInstance(IUnknown *pUnknownOuter,

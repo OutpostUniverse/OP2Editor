@@ -1,8 +1,8 @@
-
 #include "stdafx.h"
 #include "OP2Editor.h"
 #include "CTileSetManager.h"
 #include "GlobalFunctions.h"
+
 
 extern int g_cLocks;
 

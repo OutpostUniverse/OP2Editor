@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CFileStreamReader.h"
 
@@ -39,7 +38,6 @@ HRESULT __stdcall CFileStreamReader::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
 
 
 // StreamReader
@@ -104,8 +102,6 @@ HRESULT CFileStreamReader::Seek(int offset)
 
 	return S_OK;
 }
-
-
 
 
 // Class specific

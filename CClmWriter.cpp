@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CClmWriter.h"
 
@@ -37,7 +36,6 @@ HRESULT __stdcall CClmWriter::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
 
 
 // ArchiveWriter

@@ -8,8 +8,6 @@ import "oaidl.idl";
 import "ocidl.idl";
 
 
-
-
 // Interfaces
 // **********
 
@@ -40,7 +38,6 @@ interface SeekableStreamReader : StreamReader
 	[ helpstring("Sets the current read position for this stream.") ]
 	HRESULT Seek([in] int offset);
 }
-
 
 
 // StreamWriter
@@ -86,8 +83,6 @@ interface ArchiveWriter : IUnknown
 	[ helpstring("Collects all input stream data into the output stream as an archive.") ]
 	HRESULT WriteArchive([in] StreamWriter *outStream);
 }
-
-
 
 
 // TileSet
@@ -483,8 +478,6 @@ interface IResourceManager : IUnknown
 	[ helpstring("Removes all archives from the resource search path.") ]
 	HRESULT ClearSearchPath();
 }
-
-
 
 
 // ************

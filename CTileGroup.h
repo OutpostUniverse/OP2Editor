@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include "OP2Editor.h"
 #include "CTileSetManager.h"

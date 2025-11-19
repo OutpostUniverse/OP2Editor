@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CResourceManager.h"
 #include "CFileStreamReader.h"
@@ -44,9 +43,6 @@ HRESULT __stdcall CResourceManager::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
-
-
 
 
 CResourceManager::CResourceManager(BSTR gamePath) : m_cRef(1)
@@ -103,7 +99,6 @@ CResourceManager::~CResourceManager()
 }
 
 
-
 HRESULT CResourceManager::get_RootPath(BSTR *path)
 {
 	SysReAllocString(path, this->path);
@@ -139,9 +134,6 @@ HRESULT CResourceManager::put_RootPath(BSTR newPath)
 
 	return S_OK;
 }
-
-
-
 
 
 HRESULT CResourceManager::OpenStreamRead(
@@ -265,8 +257,6 @@ HRESULT CResourceManager::OpenStreamWrite(
 }
 
 
-
-
 HRESULT CResourceManager::LoadMapFile(BSTR fileName, enum MapLoadSaveFormat loadFlags, MapFile **mapFile)
 {
 	StreamReader *inStream;
@@ -341,8 +331,6 @@ HRESULT CResourceManager::CreateNewMap(int width, int height, MapFile** newMap)
 }
 
 
-
-
 HRESULT CResourceManager::LoadTileSetFile(BSTR fileName, TileSet **tileSet)
 {
 	StreamReader *inStream;
@@ -415,8 +403,6 @@ HRESULT CResourceManager::CreateTileSet(int numTiles, int bitDepth, int width, T
 
 	return hr;
 }
-
-
 
 
 HRESULT CResourceManager::LoadVolFile(BSTR fileName, int bAttachToStream, ArchiveReader **volReader)
@@ -637,8 +623,6 @@ HRESULT CResourceManager::ClearSearchPath()
 
 	return S_OK;
 }
-
-
 
 
 // ISupportErrorInfo

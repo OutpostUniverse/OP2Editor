@@ -1,7 +1,5 @@
-
 #include "stdafx.h"
 #include "GlobalFunctions.h"
-
 
 
 void PostErrorMsg(WCHAR *errorMsg)

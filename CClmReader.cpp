@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CClmReader.h"
 #include "CMemoryStreamReader.h"
@@ -39,7 +38,6 @@ HRESULT __stdcall CClmReader::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
 
 
 // ArchiveReader
@@ -140,8 +138,6 @@ HRESULT CClmReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 
 	return hr;
 }
-
-
 
 
 // Class specific

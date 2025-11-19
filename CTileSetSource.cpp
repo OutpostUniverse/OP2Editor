@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "CTileSetSource.h"
 
@@ -34,8 +33,6 @@ HRESULT __stdcall CTileSetSource::QueryInterface(REFIID riid, void** ppv)
 
 	return S_OK;
 }
-
-
 
 
 CTileSetSource::CTileSetSource(IResourceManager *resourceManager) : m_cRef(1)
