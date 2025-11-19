@@ -3,6 +3,7 @@
 #include "CTileSetManager.h"
 #include "GlobalFunctions.h"
 
+
 extern int g_cLocks;
 
 
