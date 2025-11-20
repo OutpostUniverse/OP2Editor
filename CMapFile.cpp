@@ -1194,8 +1194,12 @@ CMapFile::CMapFile(TileSetSource *tileSetSource, int width, int height) :
 	g_cLocks++;
 }
 
-CMapFile::CMapFile(TileSetSource *tileSetSource, StreamReader *stream,
-				   enum MapLoadSaveFormat loadFlags) : m_cRef(1)
+CMapFile::CMapFile(
+	TileSetSource *tileSetSource,
+	StreamReader *stream,
+	enum MapLoadSaveFormat loadFlags
+) :
+	m_cRef(1)
 {
 	// Initialize variables
 	tileData = NULL;
