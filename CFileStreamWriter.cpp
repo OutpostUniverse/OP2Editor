@@ -44,16 +44,15 @@ CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)
 	status = 0;
 
 	// Open the file
-	hFile = CreateFileW(fileName,		// lpFileName
-						GENERIC_WRITE,	// dwDesired access
-						0,				// dwShareMode
-						NULL,			// lpSecurityAttributes
-						CREATE_ALWAYS,	// dwCreationDisposition
-						FILE_ATTRIBUTE_NORMAL |
-						FILE_FLAG_SEQUENTIAL_SCAN,
-										// dwFlagsAndAttributes
-						NULL			// hTemplate
-						);
+	hFile = CreateFileW(
+		fileName,		// lpFileName
+		GENERIC_WRITE,	// dwDesired access
+		0,				// dwShareMode
+		NULL,			// lpSecurityAttributes
+		CREATE_ALWAYS,	// dwCreationDisposition
+		FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, // dwFlagsAndAttributes
+		NULL			// hTemplate
+	);
 
 	// Check if the file was opened successfully
 	if (hFile == INVALID_HANDLE_VALUE)
@@ -72,16 +71,15 @@ CFileStreamWriter::CFileStreamWriter(BSTR fileName) : m_cRef(1)
 		WideCharToMultiByte(CP_ACP, 0, fileName, stringLength, tempString, stringLength, 0, 0);
 
 		// Try to open the file with ANSI version of CreateFile
-		hFile = CreateFileA(tempString,		// lpFileName
-							GENERIC_WRITE,	// dwDesired access
-							0,				// dwShareMode
-							NULL,			// lpSecurityAttributes
-							CREATE_ALWAYS,	// dwCreationDisposition
-							FILE_ATTRIBUTE_NORMAL |
-							FILE_FLAG_SEQUENTIAL_SCAN,
-											// dwFlagsAndAttributes
-							NULL			// hTemplate
-						);
+		hFile = CreateFileA(
+			tempString,		// lpFileName
+			GENERIC_WRITE,	// dwDesired access
+			0,				// dwShareMode
+			NULL,			// lpSecurityAttributes
+			CREATE_ALWAYS,	// dwCreationDisposition
+			FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, // dwFlagsAndAttributes
+			NULL			// hTemplate
+		);
 
 		// Check for errors
 		if (hFile == INVALID_HANDLE_VALUE)

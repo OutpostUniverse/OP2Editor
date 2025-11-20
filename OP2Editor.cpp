@@ -70,15 +70,17 @@ STDAPI DllRegisterServer(void)
 	int retVal;
 
 	pathLen = GetModuleFileName(g_hInstance, path, MAX_PATH);
-	retVal = RegCreateKeyEx(HKEY_CLASSES_ROOT,
-				TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}\\InprocServer32"),
-				0,
-				TEXT(""),
-				REG_OPTION_NON_VOLATILE,
-				KEY_ALL_ACCESS,
-				NULL,
-				&hSubKey,
-				&creationDisposition);
+	retVal = RegCreateKeyEx(
+		HKEY_CLASSES_ROOT,
+		TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}\\InprocServer32"),
+		0,
+		TEXT(""),
+		REG_OPTION_NON_VOLATILE,
+		KEY_ALL_ACCESS,
+		NULL,
+		&hSubKey,
+		&creationDisposition
+	);
 	if (retVal != ERROR_SUCCESS)
 		return HRESULT_FROM_WIN32(retVal);
 	retVal = RegSetValueEx(hSubKey, TEXT(""), 0, REG_SZ, (BYTE*)path, pathLen);
@@ -92,10 +94,14 @@ STDAPI DllUnregisterServer(void)
 {
 	int retVal;
 
-	retVal = RegDeleteKey(HKEY_CLASSES_ROOT,
-						TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}\\InprocServer32"));
-	retVal = RegDeleteKey(HKEY_CLASSES_ROOT,
-						TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}"));
+	retVal = RegDeleteKey(
+		HKEY_CLASSES_ROOT,
+		TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}\\InprocServer32")
+	);
+	retVal = RegDeleteKey(
+		HKEY_CLASSES_ROOT,
+		TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}")
+	);
 
 	return HRESULT_FROM_WIN32(retVal);
 }

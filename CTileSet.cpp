@@ -615,8 +615,11 @@ int CTileSet::SaveTileSet(StreamWriter *stream)
 			destPal->rgbBlue = srcPal->rgbRed;
 			destPal->rgbReserved = srcPal->rgbReserved;
 		}
-		stream->Write(bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD),
-						(int)&tempPal, &numBytesWritten);
+		stream->Write(
+			bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD),
+			(int)&tempPal,
+			&numBytesWritten
+		);
 	}
 
 	// Write the "data" section of the "PBMP" section

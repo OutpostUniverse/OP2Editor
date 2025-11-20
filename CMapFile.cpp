@@ -808,8 +808,14 @@ HRESULT CMapFile::get_TileGroupName(int tileGroupIndex, BSTR *tileGroupName)
 	int nameLen = tileGroupInfo[tileGroupIndex].nameLen;
 	SysReAllocStringLen(tileGroupName, NULL, nameLen);
 	// Convert the name to unicode
-	MultiByteToWideChar(CP_ACP, 0, tileGroupInfo[tileGroupIndex].name, nameLen,
-									*tileGroupName, nameLen);
+	MultiByteToWideChar(
+		CP_ACP,
+		0,
+		tileGroupInfo[tileGroupIndex].name,
+		nameLen,
+		*tileGroupName,
+		nameLen
+	);
 
 	return S_OK;
 }

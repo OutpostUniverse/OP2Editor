@@ -58,8 +58,14 @@ HRESULT CVolReader::get_FileName(int index, BSTR *fileName)
 	// Allocate space for the string
 	SysReAllocStringLen(fileName, NULL, stringLength);
 	// Convert the string to Unicode
-	MultiByteToWideChar(CP_ACP, 0, string, stringLength,
-						*fileName, stringLength);
+	MultiByteToWideChar(
+		CP_ACP,
+		0,
+		string,
+		stringLength,
+		*fileName,
+		stringLength
+	);
 
 	return S_OK;
 }
@@ -133,9 +139,11 @@ HRESULT CVolReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 			// Copy the data into a memory stream
 			CMemoryStreamReader *rawStream;
 
-			rawStream = new CMemoryStreamReader(indexTable[fileIndex].fileSize,
-												(char*)buffer,
-												bAttachToBuffer);
+			rawStream = new CMemoryStreamReader(
+				indexTable[fileIndex].fileSize,
+				(char*)buffer,
+				bAttachToBuffer
+			);
 			if (rawStream == NULL)
 			{
 				if (bAttachToBuffer == 1)
@@ -399,9 +407,11 @@ int CVolReader::GetFileIndex(BSTR fileName)
 		// Get the midpoint
 		middleIndex = (startIndex + endIndex) >> 1;
 		// Check if strings match
-		result = strncmp((char*)stringBuffer + indexTable[middleIndex].fileNameOffset,
-							tempString,
-							stringLength);
+		result = strncmp(
+			(char*)stringBuffer + indexTable[middleIndex].fileNameOffset,
+			tempString,
+			stringLength
+		);
 		if (result == 0)
 		{
 			// String match

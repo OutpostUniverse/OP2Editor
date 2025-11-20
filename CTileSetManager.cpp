@@ -1193,8 +1193,14 @@ int CTileSetManager::Load(StreamReader *stream)
 				// Allocate space for a BSTR to hold the name
 				tileSetInfo[i].wideTileSetName = SysAllocStringLen(NULL, temp);
 				// Convert the name to unicode
-				MultiByteToWideChar(CP_ACP, 0, tileSetInfo[i].tileSetName, temp,
-									tileSetInfo[i].wideTileSetName, temp);
+				MultiByteToWideChar(
+					CP_ACP,
+					0,
+					tileSetInfo[i].tileSetName,
+					temp,
+					tileSetInfo[i].wideTileSetName,
+					temp
+				);
 				// Load the associated tile set
 				tileSource->LoadTileSet(tileSetInfo[i].wideTileSetName, &tileSet->tileSet);
 				// Make sure the tile set was found
