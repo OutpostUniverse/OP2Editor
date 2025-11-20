@@ -97,5 +97,5 @@ STDAPI DllUnregisterServer(void)
 	retVal = RegDeleteKey(HKEY_CLASSES_ROOT,
 						TEXT("CLSID\\{C8DE4CDE-4554-4fe9-8688-A90D91EBCA0B}"));
 
-    return HRESULT_FROM_WIN32(retVal);
+	return HRESULT_FROM_WIN32(retVal);
 }
