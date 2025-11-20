@@ -295,8 +295,9 @@ private:
 		short numTileReplacements;
 		short cycleDelay;
 	};
-	struct TerrainTypeItemTable	// Holds sets of related tiles
-								// LavaWalls/MicrobeWalls/NormalWalls/DamagedWalls/ReallyDamagedWalls/Tubes
+	// Holds sets of related tiles
+	// LavaWalls/MicrobeWalls/NormalWalls/DamagedWalls/ReallyDamagedWalls/Tubes
+	struct TerrainTypeItemTable
 	{
 		short tile[0x10];		// tile for each direction facing
 	};
