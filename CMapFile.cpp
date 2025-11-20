@@ -1136,7 +1136,7 @@ HRESULT CMapFile::InterfaceSupportsErrorInfo(REFIID riid)
 // ***********************
 
 CMapFile::CMapFile(TileSetSource *tileSetSource, int width, int height) :
-		m_cRef(1)
+	m_cRef(1)
 {
 	// Round width up to the next power of 2
 	width = RoundUpPowerOf2(width);
