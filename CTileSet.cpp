@@ -570,7 +570,7 @@ int CTileSet::SaveTileSet(StreamWriter *stream)
 	// Write the file header "PBMP" section
 	sectHead.tag = 'PMBP';		// PBMP tag
 	sectHead.size = sizeof(sectHead)*4 + sizeOfPixelData + sizeof(headInfo) + 8 +
-					bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD);
+		bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD);
 	numSectionsLeft = 2;	// Number of sections (palette, and pixel data)
 	// Check if palette section is needed
 	if (bmInfo->bmiHeader.biClrUsed == 0)
@@ -593,7 +593,7 @@ int CTileSet::SaveTileSet(StreamWriter *stream)
 		// Write the Palette section
 		sectHead.tag = 'LAPP';		// PPAL tag
 		sectHead.size = bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD) +
-						sizeof(sectHead)*2 + 8;
+			sizeof(sectHead)*2 + 8;
 		stream->Write(sizeof(sectHead), (int)&sectHead, &numBytesWritten);
 		// Write the "head" section of the "PPAL" section
 		sectHead.tag = 'daeh';		// head tag
@@ -615,8 +615,11 @@ int CTileSet::SaveTileSet(StreamWriter *stream)
 			destPal->rgbBlue = srcPal->rgbRed;
 			destPal->rgbReserved = srcPal->rgbReserved;
 		}
-		stream->Write(bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD),
-						(int)&tempPal, &numBytesWritten);
+		stream->Write(
+			bmInfo->bmiHeader.biClrUsed*sizeof(RGBQUAD),
+			(int)&tempPal,
+			&numBytesWritten
+		);
 	}
 
 	// Write the "data" section of the "PBMP" section
@@ -685,7 +688,7 @@ int CTileSet::SaveBitmapFile(StreamWriter *stream)
 	// Preapre the bitmap file header
 	bmFileHeader.bfType = 'MB';		// "BM"
 	bmFileHeader.bfSize = sizeof(bmFileHeader) + sizeof(bmInfo->bmiHeader) +
-					sizeof(RGBQUAD)*bmInfo->bmiHeader.biClrUsed + sizeOfPixelData;
+		sizeof(RGBQUAD)*bmInfo->bmiHeader.biClrUsed + sizeOfPixelData;
 	bmFileHeader.bfReserved1 = 0;
 	bmFileHeader.bfReserved2 = 0;
 	bmFileHeader.bfOffBits = bmFileHeader.bfSize - sizeOfPixelData;
@@ -729,8 +732,8 @@ void CTileSet::CalcMiniMapColors(int startTile, int endTile)
 			{
 				// Add the color components of this pixel
 				pixelDataOffset = tileNum*tileByteSize +
-									y*scanlineByteWidth +
-									((x*headInfo.bitDepth) >> 3);
+					y*scanlineByteWidth +
+					((x*headInfo.bitDepth) >> 3);
 				switch(headInfo.bitDepth)
 				{
 				case 8:

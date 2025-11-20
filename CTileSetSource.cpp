@@ -39,9 +39,10 @@ CTileSetSource::CTileSetSource(IResourceManager *resourceManager) : m_cRef(1)
 {
 	head = NULL;	// Initialize linked list of loaded files to empty
 
-	resManager = resourceManager;	// CTileSetSource is owned by IResourceManager
-									// so the reference count should not be incremented
-									// (Don't want circular references)
+	// CTileSetSource is owned by IResourceManager
+	// so the reference count should not be incremented
+	// (Don't want circular references)
+	resManager = resourceManager;
 
 	g_cLocks++;
 }

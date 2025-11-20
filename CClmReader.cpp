@@ -60,8 +60,14 @@ HRESULT CClmReader::get_FileName(int index, BSTR *fileName)
 	// Allocate space for the string
 	SysReAllocStringLen(fileName, NULL, stringLength);
 	// Convert the string to Unicode
-	MultiByteToWideChar(CP_ACP, 0, indexTable[index].fileName,
-						stringLength, *fileName, stringLength);
+	MultiByteToWideChar(
+		CP_ACP,
+		0,
+		indexTable[index].fileName,
+		stringLength,
+		*fileName,
+		stringLength
+	);
 
 	return S_OK;
 }
@@ -112,9 +118,11 @@ HRESULT CClmReader::OpenStreamRead(BSTR fileName, StreamReader **stream)
 		// CLM file much less memory intensive.
 
 		// Create a memory stream reading with the file contents
-		memStream = new CMemoryStreamReader(indexTable[fileIndex].size,
-											(char*)(dataBuffer[fileIndex]),
-											bAttachToBuffer);
+		memStream = new CMemoryStreamReader(
+			indexTable[fileIndex].size,
+			(char*)(dataBuffer[fileIndex]),
+			bAttachToBuffer
+		);
 		if (memStream == NULL)
 		{
 			// Check if buffer is discardable
